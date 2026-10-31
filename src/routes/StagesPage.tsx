@@ -1,7 +1,7 @@
 import { useStages } from '@/api/stages'
 
 export default function StagesPage() {
-  const { data, isPending, error, refetch } = useStages(2024, 1)
+  const { data, isPending, error, refetch } = useStages({ sort: 'number' })
 
   if (isPending) return <p>Chargement…</p>
   if (error) {
@@ -18,7 +18,7 @@ export default function StagesPage() {
     <ul>
       {data.items.map((s) => (
         <li key={s.id}>
-          Étape {s.number} : {s.departure} → {s.arrival} ({s.distanceKm} km)
+          Étape {s.number} : {s.start} → {s.finish} ({s.distanceKm} km)
         </li>
       ))}
     </ul>

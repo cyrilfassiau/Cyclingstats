@@ -1,4 +1,0 @@
-[
-  { "id": 1, "edition": 2024, "number": 1, "date": "2024-06-29", "departure": "Florence", "arrival": "Rimini", "distanceKm": 206, "type": "hilly" },
-  { "id": 2, "edition": 2024, "number": 2, "date": "2024-06-30", "departure": "Cesenatico", "arrival": "Bologna", "distanceKm": 199, "type": "hilly" }
-]

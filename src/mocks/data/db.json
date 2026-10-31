@@ -1,0 +1,3824 @@
+{
+  "meta": {
+    "id": 1,
+    "name": "Tour de France 2026",
+    "edition": 113,
+    "startDate": "2026-07-04",
+    "endDate": "2026-07-26",
+    "grandDepart": "Barcelone (Espagne)",
+    "finish": "Paris (Champs-Élysées)",
+    "totalDistanceKm": 3245,
+    "restDays": [
+      {
+        "date": "2026-07-13",
+        "place": "Cantal"
+      },
+      {
+        "date": "2026-07-20",
+        "place": "Haute-Savoie"
+      }
+    ],
+    "startersCount": 184,
+    "finishersCount": 158,
+    "winnerRiderId": "tadej-pogacar",
+    "winningTime": "73:56:26",
+    "averageSpeedKmh": 43.227,
+    "jerseys": {
+      "yellow": "tadej-pogacar",
+      "green": "mads-pedersen",
+      "polkaDot": "richard-carapaz",
+      "white": "isaac-del-toro",
+      "combativity": "richard-carapaz",
+      "team": "lidl-trek"
+    },
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026_Tour_de_France",
+      "https://www.oasport.it/2026/07/tour-de-france-2026-tutte-le-classifiche-dominio-assoluto-di-pogacar-maglia-verde-a-pedersen/",
+      "https://cyclinguptodate.com/cycling/tour-de-france-2026-final-classifications-pogacar-pedersen-carapaz-and-del-toro-seal-victory-in-paris"
+    ],
+    "dataNotes": [
+      "Données figées après la course (juillet 2026), pour usage pédagogique/portfolio.",
+      "Seuls les 158 arrivants et 5 abandons connus figurent dans 'riders' (26 abandons au total).",
+      "'stages[].topFinishers' ne contient que les positions vérifiées ; pour les résultats complets, voir ProCyclingStats/FirstCycling.",
+      "Les classements par points incluent les points de l'étape 21 (Wikipedia) ; certains sites affichent des totaux plus bas, publiés avant la dernière étape.",
+      "Pidcock (9e, +29:28, Pinarello–Q36.5) et Jegat (10e, +33:21, TotalEnergies) : certains tableaux tiers mélangent noms et équipes. Wikipedia a été retenue.",
+      "'gcLead' ne contient que les points d'avance vérifiés, pas le classement complet à chaque étape."
+    ]
+  },
+  "teams": [
+    {
+      "id": "alpecin-premier-tech",
+      "code": "ALP",
+      "name": "Alpecin–Premier Tech",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "decathlon-cma-cgm",
+      "code": "DEC",
+      "name": "Decathlon CMA CGM",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "ef-education-easypost",
+      "code": "EFE",
+      "name": "EF Education–EasyPost",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "groupama-fdj-united",
+      "code": "GFU",
+      "name": "Groupama–FDJ United",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "lidl-trek",
+      "code": "LTK",
+      "name": "Lidl–Trek",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "lotto-intermarche",
+      "code": "LOT",
+      "name": "Lotto–Intermarché",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "movistar-team",
+      "code": "MOV",
+      "name": "Movistar Team",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "netcompany-ineos",
+      "code": "INE",
+      "name": "Netcompany INEOS",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "nsn-cycling-team",
+      "code": "NSN",
+      "name": "NSN Cycling Team",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "red-bull-bora-hansgrohe",
+      "code": "RBH",
+      "name": "Red Bull–Bora–Hansgrohe",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "soudal-quick-step",
+      "code": "SOQ",
+      "name": "Soudal–Quick-Step",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "team-bahrain-victorious",
+      "code": "BAH",
+      "name": "Team Bahrain Victorious",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "team-jayco-alula",
+      "code": "JAY",
+      "name": "Team Jayco–AlUla",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "team-picnic-postnl",
+      "code": "PIC",
+      "name": "Team Picnic–PostNL",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "uae-team-emirates-xrg",
+      "code": "UAE",
+      "name": "UAE Team Emirates XRG",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "uno-x-mobility",
+      "code": "UNO",
+      "name": "Uno-X Mobility",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "visma-lease-a-bike",
+      "code": "VIS",
+      "name": "Visma–Lease a Bike",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "xds-astana-team",
+      "code": "XDS",
+      "name": "XDS Astana Team",
+      "category": "WorldTeam"
+    },
+    {
+      "id": "tudor-pro-cycling-team",
+      "code": "TUD",
+      "name": "Tudor Pro Cycling Team",
+      "category": "ProTeam"
+    },
+    {
+      "id": "pinarello-q36-5-pro-cycling-team",
+      "code": "PIN",
+      "name": "Pinarello–Q36.5 Pro Cycling Team",
+      "category": "ProTeam"
+    },
+    {
+      "id": "cofidis",
+      "code": "COF",
+      "name": "Cofidis",
+      "category": "ProTeam"
+    },
+    {
+      "id": "team-totalenergies",
+      "code": "TEN",
+      "name": "Team TotalEnergies",
+      "category": "ProTeam"
+    },
+    {
+      "id": "caja-rural-seguros-rga",
+      "code": "CRS",
+      "name": "Caja Rural–Seguros RGA",
+      "category": "ProTeam"
+    }
+  ],
+  "riders": [
+    {
+      "id": "tadej-pogacar",
+      "name": "Tadej Pogačar",
+      "nationality": "SLO",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 1
+    },
+    {
+      "id": "remco-evenepoel",
+      "name": "Remco Evenepoel",
+      "nationality": "BEL",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 2
+    },
+    {
+      "id": "isaac-del-toro",
+      "name": "Isaac del Toro",
+      "nationality": "MEX",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 3
+    },
+    {
+      "id": "paul-seixas",
+      "name": "Paul Seixas",
+      "nationality": "FRA",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 4
+    },
+    {
+      "id": "lenny-martinez",
+      "name": "Lenny Martinez",
+      "nationality": "FRA",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 5
+    },
+    {
+      "id": "mattias-skjelmose",
+      "name": "Mattias Skjelmose",
+      "nationality": "DEN",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 6
+    },
+    {
+      "id": "juan-ayuso",
+      "name": "Juan Ayuso",
+      "nationality": "ESP",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 7
+    },
+    {
+      "id": "richard-carapaz",
+      "name": "Richard Carapaz",
+      "nationality": "ECU",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 8
+    },
+    {
+      "id": "tom-pidcock",
+      "name": "Tom Pidcock",
+      "nationality": "GBR",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 9
+    },
+    {
+      "id": "jordan-jegat",
+      "name": "Jordan Jegat",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 10
+    },
+    {
+      "id": "yannis-voisard",
+      "name": "Yannis Voisard",
+      "nationality": "SUI",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 11
+    },
+    {
+      "id": "tobias-halland-johannessen",
+      "name": "Tobias Halland Johannessen",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 12
+    },
+    {
+      "id": "sepp-kuss",
+      "name": "Sepp Kuss",
+      "nationality": "USA",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 13
+    },
+    {
+      "id": "davide-piganzoli",
+      "name": "Davide Piganzoli",
+      "nationality": "ITA",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 14
+    },
+    {
+      "id": "jai-hindley",
+      "name": "Jai Hindley",
+      "nationality": "AUS",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 15
+    },
+    {
+      "id": "nicolas-prodhomme",
+      "name": "Nicolas Prodhomme",
+      "nationality": "FRA",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 16
+    },
+    {
+      "id": "tiesj-benoot",
+      "name": "Tiesj Benoot",
+      "nationality": "BEL",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 17
+    },
+    {
+      "id": "quinn-simmons",
+      "name": "Quinn Simmons",
+      "nationality": "USA",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 18
+    },
+    {
+      "id": "sean-quinn",
+      "name": "Sean Quinn",
+      "nationality": "USA",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 19
+    },
+    {
+      "id": "egan-bernal",
+      "name": "Egan Bernal",
+      "nationality": "COL",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 20
+    },
+    {
+      "id": "adam-yates",
+      "name": "Adam Yates",
+      "nationality": "GBR",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 21
+    },
+    {
+      "id": "thymen-arensman",
+      "name": "Thymen Arensman",
+      "nationality": "NED",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 22
+    },
+    {
+      "id": "carlos-verona",
+      "name": "Carlos Verona",
+      "nationality": "ESP",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 23
+    },
+    {
+      "id": "matthew-riccitello",
+      "name": "Matthew Riccitello",
+      "nationality": "USA",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 24
+    },
+    {
+      "id": "derek-gee-west",
+      "name": "Derek Gee-West",
+      "nationality": "CAN",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 25
+    },
+    {
+      "id": "harold-tejada",
+      "name": "Harold Tejada",
+      "nationality": "COL",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 26
+    },
+    {
+      "id": "maxim-van-gils",
+      "name": "Maxim Van Gils",
+      "nationality": "BEL",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 27
+    },
+    {
+      "id": "ben-o-connor",
+      "name": "Ben O'Connor",
+      "nationality": "AUS",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 28
+    },
+    {
+      "id": "pablo-castrillo",
+      "name": "Pablo Castrillo",
+      "nationality": "ESP",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 29
+    },
+    {
+      "id": "matteo-jorgenson",
+      "name": "Matteo Jorgenson",
+      "nationality": "USA",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 30
+    },
+    {
+      "id": "guillaume-martin",
+      "name": "Guillaume Martin",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 31
+    },
+    {
+      "id": "felix-grossschartner",
+      "name": "Felix Großschartner",
+      "nationality": "AUT",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 32
+    },
+    {
+      "id": "mattia-cattaneo",
+      "name": "Mattia Cattaneo",
+      "nationality": "ITA",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 33
+    },
+    {
+      "id": "raul-garcia-pierna",
+      "name": "Raúl García Pierna",
+      "nationality": "ESP",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 34
+    },
+    {
+      "id": "mauro-schmid",
+      "name": "Mauro Schmid",
+      "nationality": "SUI",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 35
+    },
+    {
+      "id": "kevin-vauquelin",
+      "name": "Kévin Vauquelin",
+      "nationality": "FRA",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 36
+    },
+    {
+      "id": "antonio-tiberi",
+      "name": "Antonio Tiberi",
+      "nationality": "ITA",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 37
+    },
+    {
+      "id": "sergio-higuita",
+      "name": "Sergio Higuita",
+      "nationality": "COL",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 38
+    },
+    {
+      "id": "quinten-hermans",
+      "name": "Quinten Hermans",
+      "nationality": "BEL",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 39
+    },
+    {
+      "id": "clement-braz-afonso",
+      "name": "Clément Braz Afonso",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 40
+    },
+    {
+      "id": "lennert-van-eetvelt",
+      "name": "Lennert Van Eetvelt",
+      "nationality": "BEL",
+      "teamId": "lotto-intermarche",
+      "status": "finished",
+      "finalRank": 41
+    },
+    {
+      "id": "aurelien-paret-peintre",
+      "name": "Aurélien Paret-Peintre",
+      "nationality": "FRA",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 42
+    },
+    {
+      "id": "tobias-foss",
+      "name": "Tobias Foss",
+      "nationality": "NOR",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 43
+    },
+    {
+      "id": "valentin-paret-peintre",
+      "name": "Valentin Paret-Peintre",
+      "nationality": "FRA",
+      "teamId": "soudal-quick-step",
+      "status": "finished",
+      "finalRank": 44
+    },
+    {
+      "id": "ion-izagirre",
+      "name": "Ion Izagirre",
+      "nationality": "ESP",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 45
+    },
+    {
+      "id": "alex-baudin",
+      "name": "Alex Baudin",
+      "nationality": "FRA",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 46
+    },
+    {
+      "id": "abel-balderstone",
+      "name": "Abel Balderstone",
+      "nationality": "ESP",
+      "teamId": "caja-rural-seguros-rga",
+      "status": "finished",
+      "finalRank": 47
+    },
+    {
+      "id": "marc-hirschi",
+      "name": "Marc Hirschi",
+      "nationality": "SUI",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 48
+    },
+    {
+      "id": "mathias-vacek",
+      "name": "Mathias Vacek",
+      "nationality": "CZE",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 49
+    },
+    {
+      "id": "nicolas-breuillard",
+      "name": "Nicolas Breuillard",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 50
+    },
+    {
+      "id": "joris-delbove",
+      "name": "Joris Delbove",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 51
+    },
+    {
+      "id": "michael-matthews",
+      "name": "Michael Matthews",
+      "nationality": "AUS",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 52
+    },
+    {
+      "id": "michael-valgren",
+      "name": "Michael Valgren",
+      "nationality": "DEN",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 53
+    },
+    {
+      "id": "javier-romo",
+      "name": "Javier Romo",
+      "nationality": "ESP",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 54
+    },
+    {
+      "id": "damiano-caruso",
+      "name": "Damiano Caruso",
+      "nationality": "ITA",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 55
+    },
+    {
+      "id": "xandro-meurisse",
+      "name": "Xandro Meurisse",
+      "nationality": "BEL",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 56
+    },
+    {
+      "id": "romain-gregoire",
+      "name": "Romain Grégoire",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 57
+    },
+    {
+      "id": "quentin-pacher",
+      "name": "Quentin Pacher",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 58
+    },
+    {
+      "id": "ben-healy",
+      "name": "Ben Healy",
+      "nationality": "IRL",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 59
+    },
+    {
+      "id": "anders-skaarseth",
+      "name": "Anders Skaarseth",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 60
+    },
+    {
+      "id": "alexandre-delettre",
+      "name": "Alexandre Delettre",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 61
+    },
+    {
+      "id": "bruno-armirail",
+      "name": "Bruno Armirail",
+      "nationality": "FRA",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 62
+    },
+    {
+      "id": "michael-storer",
+      "name": "Michael Storer",
+      "nationality": "AUS",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 63
+    },
+    {
+      "id": "anders-halland-johannessen",
+      "name": "Anders Halland Johannessen",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 64
+    },
+    {
+      "id": "nelson-oliveira",
+      "name": "Nelson Oliveira",
+      "nationality": "POR",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 65
+    },
+    {
+      "id": "vlad-van-mechelen",
+      "name": "Vlad Van Mechelen",
+      "nationality": "BEL",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 66
+    },
+    {
+      "id": "louis-vervaeke",
+      "name": "Louis Vervaeke",
+      "nationality": "BEL",
+      "teamId": "soudal-quick-step",
+      "status": "finished",
+      "finalRank": 67
+    },
+    {
+      "id": "george-bennett",
+      "name": "George Bennett",
+      "nationality": "NZL",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 68
+    },
+    {
+      "id": "clement-russo",
+      "name": "Clément Russo",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 69
+    },
+    {
+      "id": "felix-engelhardt",
+      "name": "Felix Engelhardt",
+      "nationality": "GER",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 70
+    },
+    {
+      "id": "jasper-stuyven",
+      "name": "Jasper Stuyven",
+      "nationality": "BEL",
+      "teamId": "soudal-quick-step",
+      "status": "finished",
+      "finalRank": 71
+    },
+    {
+      "id": "nils-politt",
+      "name": "Nils Politt",
+      "nationality": "GER",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 72
+    },
+    {
+      "id": "rick-pluimers",
+      "name": "Rick Pluimers",
+      "nationality": "NED",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 73
+    },
+    {
+      "id": "tim-wellens",
+      "name": "Tim Wellens",
+      "nationality": "BEL",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 74
+    },
+    {
+      "id": "mathieu-van-der-poel",
+      "name": "Mathieu van der Poel",
+      "nationality": "NED",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 75
+    },
+    {
+      "id": "mathis-le-berre",
+      "name": "Mathis Le Berre",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 76
+    },
+    {
+      "id": "jonas-abrahamsen",
+      "name": "Jonas Abrahamsen",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 77
+    },
+    {
+      "id": "marco-frigo",
+      "name": "Marco Frigo",
+      "nationality": "ITA",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 78
+    },
+    {
+      "id": "ewen-costiou",
+      "name": "Ewen Costiou",
+      "nationality": "FRA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 79
+    },
+    {
+      "id": "mads-pedersen",
+      "name": "Mads Pedersen",
+      "nationality": "DEN",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 80
+    },
+    {
+      "id": "brent-van-moer",
+      "name": "Brent Van Moer",
+      "nationality": "BEL",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 81
+    },
+    {
+      "id": "victor-campenaerts",
+      "name": "Victor Campenaerts",
+      "nationality": "BEL",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 82
+    },
+    {
+      "id": "jan-tratnik",
+      "name": "Jan Tratnik",
+      "nationality": "SLO",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 83
+    },
+    {
+      "id": "kasper-asgreen",
+      "name": "Kasper Asgreen",
+      "nationality": "DEN",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 84
+    },
+    {
+      "id": "alex-aranburu",
+      "name": "Alex Aranburu",
+      "nationality": "ESP",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 85
+    },
+    {
+      "id": "matteo-vercher",
+      "name": "Mattéo Vercher",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 86
+    },
+    {
+      "id": "warren-barguil",
+      "name": "Warren Barguil",
+      "nationality": "FRA",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 87
+    },
+    {
+      "id": "damien-howson",
+      "name": "Damien Howson",
+      "nationality": "AUS",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 88
+    },
+    {
+      "id": "sebastian-berwick",
+      "name": "Sebastian Berwick",
+      "nationality": "AUS",
+      "teamId": "caja-rural-seguros-rga",
+      "status": "finished",
+      "finalRank": 89
+    },
+    {
+      "id": "georg-zimmermann",
+      "name": "Georg Zimmermann",
+      "nationality": "GER",
+      "teamId": "lotto-intermarche",
+      "status": "finished",
+      "finalRank": 90
+    },
+    {
+      "id": "luke-plapp",
+      "name": "Luke Plapp",
+      "nationality": "AUS",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 91
+    },
+    {
+      "id": "matej-mohoric",
+      "name": "Matej Mohorič",
+      "nationality": "SLO",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 92
+    },
+    {
+      "id": "lorenzo-germani",
+      "name": "Lorenzo Germani",
+      "nationality": "ITA",
+      "teamId": "groupama-fdj-united",
+      "status": "finished",
+      "finalRank": 93
+    },
+    {
+      "id": "toms-skujins",
+      "name": "Toms Skujiņš",
+      "nationality": "LAT",
+      "teamId": "lidl-trek",
+      "status": "finished",
+      "finalRank": 94
+    },
+    {
+      "id": "nico-denz",
+      "name": "Nico Denz",
+      "nationality": "GER",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 95
+    },
+    {
+      "id": "emiel-verstrynge",
+      "name": "Emiel Verstrynge",
+      "nationality": "BEL",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 96
+    },
+    {
+      "id": "magnus-cort",
+      "name": "Magnus Cort",
+      "nationality": "DEN",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 97
+    },
+    {
+      "id": "nicolas-vinokurov",
+      "name": "Nicolas Vinokurov",
+      "nationality": "KAZ",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 98
+    },
+    {
+      "id": "xabier-azparren",
+      "name": "Xabier Azparren",
+      "nationality": "ESP",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 99
+    },
+    {
+      "id": "simone-velasco",
+      "name": "Simone Velasco",
+      "nationality": "ITA",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 100
+    },
+    {
+      "id": "jefferson-alveiro-cepeda",
+      "name": "Jefferson Alveiro Cepeda",
+      "nationality": "ECU",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 101
+    },
+    {
+      "id": "frank-van-den-broek",
+      "name": "Frank van den Broek",
+      "nationality": "NED",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 102
+    },
+    {
+      "id": "per-strand-hagenes",
+      "name": "Per Strand Hagenes",
+      "nationality": "NOR",
+      "teamId": "visma-lease-a-bike",
+      "status": "finished",
+      "finalRank": 103
+    },
+    {
+      "id": "michel-hessmann",
+      "name": "Michel Hessmann",
+      "nationality": "GER",
+      "teamId": "movistar-team",
+      "status": "finished",
+      "finalRank": 104
+    },
+    {
+      "id": "robert-stannard",
+      "name": "Robert Stannard",
+      "nationality": "AUS",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 105
+    },
+    {
+      "id": "max-walker",
+      "name": "Max Walker",
+      "nationality": "GBR",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 106
+    },
+    {
+      "id": "luke-durbridge",
+      "name": "Luke Durbridge",
+      "nationality": "AUS",
+      "teamId": "team-jayco-alula",
+      "status": "finished",
+      "finalRank": 107
+    },
+    {
+      "id": "anthony-turgis",
+      "name": "Anthony Turgis",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 108
+    },
+    {
+      "id": "thibault-guernalec",
+      "name": "Thibault Guernalec",
+      "nationality": "FRA",
+      "teamId": "team-totalenergies",
+      "status": "finished",
+      "finalRank": 109
+    },
+    {
+      "id": "michal-kwiatkowski",
+      "name": "Michał Kwiatkowski",
+      "nationality": "POL",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 110
+    },
+    {
+      "id": "tim-van-dijke",
+      "name": "Tim van Dijke",
+      "nationality": "NED",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "finished",
+      "finalRank": 111
+    },
+    {
+      "id": "jakub-otruba",
+      "name": "Jakub Otruba",
+      "nationality": "CZE",
+      "teamId": "caja-rural-seguros-rga",
+      "status": "finished",
+      "finalRank": 112
+    },
+    {
+      "id": "georg-steinhauser",
+      "name": "Georg Steinhauser",
+      "nationality": "GER",
+      "teamId": "ef-education-easypost",
+      "status": "finished",
+      "finalRank": 113
+    },
+    {
+      "id": "edward-planckaert",
+      "name": "Edward Planckaert",
+      "nationality": "BEL",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 114
+    },
+    {
+      "id": "jonas-rickaert",
+      "name": "Jonas Rickaert",
+      "nationality": "BEL",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 115
+    },
+    {
+      "id": "florian-vermeersch",
+      "name": "Florian Vermeersch",
+      "nationality": "BEL",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "finished",
+      "finalRank": 116
+    },
+    {
+      "id": "benjamin-thomas",
+      "name": "Benjamin Thomas",
+      "nationality": "FRA",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 117
+    },
+    {
+      "id": "robbe-dhondt",
+      "name": "Robbe Dhondt",
+      "nationality": "BEL",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 118
+    },
+    {
+      "id": "hugo-page",
+      "name": "Hugo Page",
+      "nationality": "FRA",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 119
+    },
+    {
+      "id": "josh-tarling",
+      "name": "Josh Tarling",
+      "nationality": "GBR",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 120
+    },
+    {
+      "id": "aaron-gate",
+      "name": "Aaron Gate",
+      "nationality": "NZL",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 121
+    },
+    {
+      "id": "alex-kirsch",
+      "name": "Alex Kirsch",
+      "nationality": "LUX",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 122
+    },
+    {
+      "id": "filippo-ganna",
+      "name": "Filippo Ganna",
+      "nationality": "ITA",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 123
+    },
+    {
+      "id": "mike-teunissen",
+      "name": "Mike Teunissen",
+      "nationality": "NED",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 124
+    },
+    {
+      "id": "julian-alaphilippe",
+      "name": "Julian Alaphilippe",
+      "nationality": "FRA",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 125
+    },
+    {
+      "id": "stefano-oldani",
+      "name": "Stefano Oldani",
+      "nationality": "ITA",
+      "teamId": "caja-rural-seguros-rga",
+      "status": "finished",
+      "finalRank": 126
+    },
+    {
+      "id": "fred-wright",
+      "name": "Fred Wright",
+      "nationality": "GBR",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 127
+    },
+    {
+      "id": "liam-slock",
+      "name": "Liam Slock",
+      "nationality": "BEL",
+      "teamId": "lotto-intermarche",
+      "status": "finished",
+      "finalRank": 128
+    },
+    {
+      "id": "joel-nicolau",
+      "name": "Joel Nicolau",
+      "nationality": "ESP",
+      "teamId": "caja-rural-seguros-rga",
+      "status": "finished",
+      "finalRank": 129
+    },
+    {
+      "id": "daan-hoole",
+      "name": "Daan Hoole",
+      "nationality": "NED",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 130
+    },
+    {
+      "id": "dylan-van-baarle",
+      "name": "Dylan van Baarle",
+      "nationality": "NED",
+      "teamId": "soudal-quick-step",
+      "status": "finished",
+      "finalRank": 131
+    },
+    {
+      "id": "huub-artz",
+      "name": "Huub Artz",
+      "nationality": "NED",
+      "teamId": "lotto-intermarche",
+      "status": "finished",
+      "finalRank": 132
+    },
+    {
+      "id": "tim-marsman",
+      "name": "Tim Marsman",
+      "nationality": "NED",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 133
+    },
+    {
+      "id": "krists-neilands",
+      "name": "Krists Neilands",
+      "nationality": "LAT",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 134
+    },
+    {
+      "id": "jasper-philipsen",
+      "name": "Jasper Philipsen",
+      "nationality": "BEL",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 135
+    },
+    {
+      "id": "dorian-godon",
+      "name": "Dorian Godon",
+      "nationality": "FRA",
+      "teamId": "netcompany-ineos",
+      "status": "finished",
+      "finalRank": 136
+    },
+    {
+      "id": "silvan-dillier",
+      "name": "Silvan Dillier",
+      "nationality": "SUI",
+      "teamId": "alpecin-premier-tech",
+      "status": "finished",
+      "finalRank": 137
+    },
+    {
+      "id": "soren-waerenskjold",
+      "name": "Søren Wærenskjold",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "finished",
+      "finalRank": 138
+    },
+    {
+      "id": "niklas-markl",
+      "name": "Niklas Märkl",
+      "nationality": "GER",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 139
+    },
+    {
+      "id": "pavel-bittner",
+      "name": "Pavel Bittner",
+      "nationality": "CZE",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 140
+    },
+    {
+      "id": "biniam-girmay",
+      "name": "Biniam Girmay",
+      "nationality": "ERI",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 141
+    },
+    {
+      "id": "max-kanter",
+      "name": "Max Kanter",
+      "nationality": "GER",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 142
+    },
+    {
+      "id": "pascal-eenkhoorn",
+      "name": "Pascal Eenkhoorn",
+      "nationality": "NED",
+      "teamId": "soudal-quick-step",
+      "status": "finished",
+      "finalRank": 143
+    },
+    {
+      "id": "jenthe-biermans",
+      "name": "Jenthe Biermans",
+      "nationality": "BEL",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 144
+    },
+    {
+      "id": "john-degenkolb",
+      "name": "John Degenkolb",
+      "nationality": "GER",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 145
+    },
+    {
+      "id": "baptiste-veistroffer",
+      "name": "Baptiste Veistroffer",
+      "nationality": "FRA",
+      "teamId": "lotto-intermarche",
+      "status": "finished",
+      "finalRank": 146
+    },
+    {
+      "id": "marco-haller",
+      "name": "Marco Haller",
+      "nationality": "AUT",
+      "teamId": "tudor-pro-cycling-team",
+      "status": "finished",
+      "finalRank": 147
+    },
+    {
+      "id": "milan-fretin",
+      "name": "Milan Fretin",
+      "nationality": "BEL",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 148
+    },
+    {
+      "id": "olav-kooij",
+      "name": "Olav Kooij",
+      "nationality": "NED",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 149
+    },
+    {
+      "id": "jake-stewart",
+      "name": "Jake Stewart",
+      "nationality": "GBR",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 150
+    },
+    {
+      "id": "lewis-askey",
+      "name": "Lewis Askey",
+      "nationality": "GBR",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 151
+    },
+    {
+      "id": "davide-ballerini",
+      "name": "Davide Ballerini",
+      "nationality": "ITA",
+      "teamId": "xds-astana-team",
+      "status": "finished",
+      "finalRank": 152
+    },
+    {
+      "id": "piet-allegaert",
+      "name": "Piet Allegaert",
+      "nationality": "BEL",
+      "teamId": "cofidis",
+      "status": "finished",
+      "finalRank": 153
+    },
+    {
+      "id": "phil-bauhaus",
+      "name": "Phil Bauhaus",
+      "nationality": "GER",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 154
+    },
+    {
+      "id": "kamil-gradek",
+      "name": "Kamil Gradek",
+      "nationality": "POL",
+      "teamId": "team-bahrain-victorious",
+      "status": "finished",
+      "finalRank": 155
+    },
+    {
+      "id": "julius-van-den-berg",
+      "name": "Julius van den Berg",
+      "nationality": "NED",
+      "teamId": "team-picnic-postnl",
+      "status": "finished",
+      "finalRank": 156
+    },
+    {
+      "id": "matis-louvel",
+      "name": "Matis Louvel",
+      "nationality": "FRA",
+      "teamId": "nsn-cycling-team",
+      "status": "finished",
+      "finalRank": 157
+    },
+    {
+      "id": "cees-bol",
+      "name": "Cees Bol",
+      "nationality": "NED",
+      "teamId": "decathlon-cma-cgm",
+      "status": "finished",
+      "finalRank": 158
+    },
+    {
+      "id": "torstein-traeen",
+      "name": "Torstein Træen",
+      "nationality": "NOR",
+      "teamId": "uno-x-mobility",
+      "status": "abandoned",
+      "finalRank": null,
+      "abandonedOnStage": 6,
+      "abandonReason": "Chute dans la descente du Tourmalet (commotion, côtes fracturées)"
+    },
+    {
+      "id": "tim-merlier",
+      "name": "Tim Merlier",
+      "nationality": "BEL",
+      "teamId": "soudal-quick-step",
+      "status": "abandoned",
+      "finalRank": null,
+      "abandonedOnStage": 15,
+      "abandonReason": "Abandon sur terrain montagneux"
+    },
+    {
+      "id": "jonas-vingegaard",
+      "name": "Jonas Vingegaard",
+      "nationality": "DEN",
+      "teamId": "visma-lease-a-bike",
+      "status": "abandoned",
+      "finalRank": null,
+      "abandonedOnStage": 15,
+      "abandonReason": "Chute, fracture de la clavicule"
+    },
+    {
+      "id": "florian-lipowitz",
+      "name": "Florian Lipowitz",
+      "nationality": "GER",
+      "teamId": "red-bull-bora-hansgrohe",
+      "status": "abandoned",
+      "finalRank": null,
+      "abandonedOnStage": 16,
+      "abandonReason": "Chute dans la descente du contre-la-montre, fracture de la clavicule"
+    },
+    {
+      "id": "brandon-mcnulty",
+      "name": "Brandon McNulty",
+      "nationality": "USA",
+      "teamId": "uae-team-emirates-xrg",
+      "status": "abandoned",
+      "finalRank": null,
+      "abandonedOnStage": 18,
+      "abandonReason": "Maladie (touchant l'équipe UAE)"
+    }
+  ],
+  "stages": [
+    {
+      "id": 1,
+      "number": 1,
+      "date": "2026-07-04",
+      "start": "Barcelone",
+      "finish": "Barcelone (Montjuïc)",
+      "distanceKm": 19.6,
+      "type": "team-time-trial",
+      "winnerRiderId": null,
+      "winnerTeamId": "visma-lease-a-bike",
+      "yellowJerseyRiderId": "jonas-vingegaard",
+      "topFinishers": [],
+      "notes": "Contre-la-montre par équipes (première fois en ouverture depuis 1971). Visma–Lease a Bike gagne, Vingegaard prend le jaune. INEOS à 8 s, UAE à 12 s."
+    },
+    {
+      "id": 2,
+      "number": 2,
+      "date": "2026-07-05",
+      "start": "Tarragone",
+      "finish": "Barcelone",
+      "distanceKm": 168.5,
+      "type": "hilly",
+      "winnerRiderId": "isaac-del-toro",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "isaac-del-toro",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "isaac-del-toro"
+        },
+        {
+          "position": 2,
+          "riderId": "tadej-pogacar"
+        },
+        {
+          "position": 3,
+          "riderId": "remco-evenepoel"
+        }
+      ],
+      "notes": "Pogačar lance le sprint pour son équipier del Toro, qui gagne et prend le jaune."
+    },
+    {
+      "id": 3,
+      "number": 3,
+      "date": "2026-07-06",
+      "start": "Granollers",
+      "finish": "Les Angles",
+      "distanceKm": 195.9,
+      "type": "mountain",
+      "winnerRiderId": "tadej-pogacar",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "tadej-pogacar"
+        },
+        {
+          "position": 2,
+          "riderId": "jonas-vingegaard"
+        }
+      ],
+      "notes": "Attaque de Pogačar dans la dernière montée vers Les Angles, qui reprend le jaune. Étape sans public à cause des incendies."
+    },
+    {
+      "id": 4,
+      "number": 4,
+      "date": "2026-07-07",
+      "start": "Carcassonne",
+      "finish": "Foix",
+      "distanceKm": 181.9,
+      "type": "hilly",
+      "winnerRiderId": "mads-pedersen",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "torstein-traeen",
+      "topFinishers": [],
+      "notes": "Chaleur d'environ 40 °C. Le jaune passe à Torstein Træen, membre de l'échappée."
+    },
+    {
+      "id": 5,
+      "number": 5,
+      "date": "2026-07-08",
+      "start": "Lannemezan",
+      "finish": "Pau",
+      "distanceKm": 158.3,
+      "type": "flat",
+      "winnerRiderId": "olav-kooij",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "torstein-traeen",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "olav-kooij"
+        },
+        {
+          "position": 2,
+          "riderId": "max-kanter"
+        },
+        {
+          "position": 3,
+          "riderId": "tim-merlier"
+        }
+      ],
+      "notes": "Sprint massif à Pau."
+    },
+    {
+      "id": 6,
+      "number": 6,
+      "date": "2026-07-09",
+      "start": "Pau",
+      "finish": "Gavarnie-Gèdre",
+      "distanceKm": 186.2,
+      "type": "mountain",
+      "winnerRiderId": "tadej-pogacar",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "tadej-pogacar"
+        },
+        {
+          "position": 2,
+          "riderId": "jonas-vingegaard"
+        }
+      ],
+      "notes": "Première étape de haute montagne, Tourmalet. Raid solitaire de Pogačar, victoire avec 2 min 38 s d'avance sur Vingegaard. Træen abandonne."
+    },
+    {
+      "id": 7,
+      "number": 7,
+      "date": "2026-07-10",
+      "start": "Hagetmau",
+      "finish": "Bordeaux",
+      "distanceKm": 175.1,
+      "type": "flat",
+      "winnerRiderId": "tim-merlier",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "number": 8,
+      "date": "2026-07-11",
+      "start": "Périgueux",
+      "finish": "Bergerac",
+      "distanceKm": 180.4,
+      "type": "flat",
+      "winnerRiderId": "tim-merlier",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "number": 9,
+      "date": "2026-07-12",
+      "start": "Malemort",
+      "finish": "Ussel",
+      "distanceKm": 154.6,
+      "type": "hilly",
+      "winnerRiderId": "mathieu-van-der-poel",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Étape raccourcie de 185,5 à 154,6 km (alerte canicule rouge en Corrèze). Victoire de van der Poel en échappée.",
+      "originalDistanceKm": 185.5
+    },
+    {
+      "id": 10,
+      "number": 10,
+      "date": "2026-07-14",
+      "start": "Aurillac",
+      "finish": "Le Lioran",
+      "distanceKm": 166.6,
+      "type": "mountain",
+      "winnerRiderId": "tadej-pogacar",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Attaque de Pogačar dans le col du Pertus, 3e victoire d'étape."
+    },
+    {
+      "id": 11,
+      "number": 11,
+      "date": "2026-07-15",
+      "start": "Vichy",
+      "finish": "Nevers",
+      "distanceKm": 161.3,
+      "type": "flat",
+      "winnerRiderId": "soren-waerenskjold",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "soren-waerenskjold"
+        },
+        {
+          "position": 2,
+          "riderId": "olav-kooij"
+        },
+        {
+          "position": 3,
+          "riderId": "jasper-philipsen"
+        }
+      ],
+      "notes": "Moyenne record de l'histoire du Tour : 50,91 km/h.",
+      "winningTime": "3:10:06",
+      "averageSpeedKmh": 50.91
+    },
+    {
+      "id": 12,
+      "number": 12,
+      "date": "2026-07-16",
+      "start": "Magny-Cours",
+      "finish": "Chalon-sur-Saône",
+      "distanceKm": 179.1,
+      "type": "flat",
+      "winnerRiderId": "tim-merlier",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "number": 13,
+      "date": "2026-07-17",
+      "start": "Dole",
+      "finish": "Belfort",
+      "distanceKm": 205.8,
+      "type": "hilly",
+      "winnerRiderId": "mauro-schmid",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "mauro-schmid"
+        },
+        {
+          "position": 2,
+          "riderId": "harold-tejada"
+        }
+      ],
+      "notes": "Victoire de Schmid en échappée, Pidcock dans l'échappée."
+    },
+    {
+      "id": 14,
+      "number": 14,
+      "date": "2026-07-18",
+      "start": "Mulhouse",
+      "finish": "Le Markstein",
+      "distanceKm": 155.3,
+      "type": "mountain",
+      "winnerRiderId": "tadej-pogacar",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Pogačar attaque à environ 7 km de l'arrivée dans les Vosges."
+    },
+    {
+      "id": 15,
+      "number": 15,
+      "date": "2026-07-19",
+      "start": "Champagnole",
+      "finish": "Plateau de Solaison",
+      "distanceKm": 183.9,
+      "type": "mountain",
+      "winnerRiderId": "remco-evenepoel",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "remco-evenepoel"
+        },
+        {
+          "position": 2,
+          "riderId": "tadej-pogacar"
+        }
+      ],
+      "notes": "Vingegaard chute et abandonne (clavicule). Premier succès d'Evenepoel en montagne sur le Tour."
+    },
+    {
+      "id": 16,
+      "number": 16,
+      "date": "2026-07-21",
+      "start": "Évian-les-Bains",
+      "finish": "Thonon-les-Bains",
+      "distanceKm": 26.1,
+      "type": "individual-time-trial",
+      "winnerRiderId": "remco-evenepoel",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "remco-evenepoel"
+        },
+        {
+          "position": 2,
+          "riderId": "tadej-pogacar"
+        },
+        {
+          "position": 3,
+          "riderId": "mattias-skjelmose"
+        }
+      ],
+      "notes": "Contre-la-montre : Evenepoel devant Pogačar (+28 s). Lipowitz chute et abandonne."
+    },
+    {
+      "id": 17,
+      "number": 17,
+      "date": "2026-07-22",
+      "start": "Chambéry",
+      "finish": "Voiron",
+      "distanceKm": 174.7,
+      "type": "flat",
+      "winnerRiderId": "jasper-philipsen",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Philipsen s'impose, la lutte pour le maillot vert se resserre."
+    },
+    {
+      "id": 18,
+      "number": 18,
+      "date": "2026-07-23",
+      "start": "Voiron",
+      "finish": "Orcières-Merlette",
+      "distanceKm": 185.2,
+      "type": "mountain",
+      "winnerRiderId": "richard-carapaz",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Carapaz seul dans le final, prend la tête du classement de la montagne."
+    },
+    {
+      "id": 19,
+      "number": 19,
+      "date": "2026-07-24",
+      "start": "Gap",
+      "finish": "Alpe d'Huez",
+      "distanceKm": 127.9,
+      "type": "mountain",
+      "winnerRiderId": "tadej-pogacar",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Pogačar bat le record de montée de l'Alpe d'Huez de Pantani (1995)."
+    },
+    {
+      "id": 20,
+      "number": 20,
+      "date": "2026-07-25",
+      "start": "Le Bourg-d'Oisans",
+      "finish": "Alpe d'Huez",
+      "distanceKm": 170.9,
+      "type": "mountain",
+      "winnerRiderId": "richard-carapaz",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [],
+      "notes": "Étape reine (4 cols dont 3 hors catégorie). Carapaz s'impose ; Pogačar travaille pour del Toro."
+    },
+    {
+      "id": 21,
+      "number": 21,
+      "date": "2026-07-26",
+      "start": "Paris",
+      "finish": "Paris (Champs-Élysées)",
+      "distanceKm": 88.7,
+      "type": "flat",
+      "winnerRiderId": "mathieu-van-der-poel",
+      "winnerTeamId": null,
+      "yellowJerseyRiderId": "tadej-pogacar",
+      "topFinishers": [
+        {
+          "position": 1,
+          "riderId": "mathieu-van-der-poel"
+        },
+        {
+          "position": 2,
+          "riderId": "jasper-philipsen"
+        },
+        {
+          "position": 3,
+          "riderId": "mads-pedersen"
+        }
+      ],
+      "notes": "Étape raccourcie de 132,5 à 88,7 km (incendies en Gironde). Classement général neutralisé après le premier tour de Montmartre. Van der Poel gagne à la photo-finish.",
+      "originalDistanceKm": 132.5,
+      "winningTime": "1:58:49"
+    }
+  ],
+  "gc": [
+    {
+      "id": 1,
+      "rank": 1,
+      "riderId": "tadej-pogacar",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "73:56:26",
+      "totalSeconds": 266186,
+      "gapSeconds": 0
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "riderId": "remco-evenepoel",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "74:02:52",
+      "totalSeconds": 266572,
+      "gapSeconds": 386,
+      "gap": "6:26"
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "riderId": "isaac-del-toro",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "74:06:08",
+      "totalSeconds": 266768,
+      "gapSeconds": 582,
+      "gap": "9:42"
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "riderId": "paul-seixas",
+      "teamId": "decathlon-cma-cgm",
+      "time": "74:08:22",
+      "totalSeconds": 266902,
+      "gapSeconds": 716,
+      "gap": "11:56"
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "riderId": "lenny-martinez",
+      "teamId": "team-bahrain-victorious",
+      "time": "74:09:28",
+      "totalSeconds": 266968,
+      "gapSeconds": 782,
+      "gap": "13:02"
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "riderId": "mattias-skjelmose",
+      "teamId": "lidl-trek",
+      "time": "74:11:25",
+      "totalSeconds": 267085,
+      "gapSeconds": 899,
+      "gap": "14:59"
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "riderId": "juan-ayuso",
+      "teamId": "lidl-trek",
+      "time": "74:14:14",
+      "totalSeconds": 267254,
+      "gapSeconds": 1068,
+      "gap": "17:48"
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "riderId": "richard-carapaz",
+      "teamId": "ef-education-easypost",
+      "time": "74:16:26",
+      "totalSeconds": 267386,
+      "gapSeconds": 1200,
+      "gap": "20:00"
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "riderId": "tom-pidcock",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "74:25:54",
+      "totalSeconds": 267954,
+      "gapSeconds": 1768,
+      "gap": "29:28"
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "riderId": "jordan-jegat",
+      "teamId": "team-totalenergies",
+      "time": "74:29:47",
+      "totalSeconds": 268187,
+      "gapSeconds": 2001,
+      "gap": "33:21"
+    },
+    {
+      "id": 11,
+      "rank": 11,
+      "riderId": "yannis-voisard",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "74:34:28",
+      "totalSeconds": 268468,
+      "gapSeconds": 2282,
+      "gap": "38:02"
+    },
+    {
+      "id": 12,
+      "rank": 12,
+      "riderId": "tobias-halland-johannessen",
+      "teamId": "uno-x-mobility",
+      "time": "74:53:03",
+      "totalSeconds": 269583,
+      "gapSeconds": 3397,
+      "gap": "56:37"
+    },
+    {
+      "id": 13,
+      "rank": 13,
+      "riderId": "sepp-kuss",
+      "teamId": "visma-lease-a-bike",
+      "time": "74:58:49",
+      "totalSeconds": 269929,
+      "gapSeconds": 3743,
+      "gap": "1:02:23"
+    },
+    {
+      "id": 14,
+      "rank": 14,
+      "riderId": "davide-piganzoli",
+      "teamId": "visma-lease-a-bike",
+      "time": "75:00:09",
+      "totalSeconds": 270009,
+      "gapSeconds": 3823,
+      "gap": "1:03:43"
+    },
+    {
+      "id": 15,
+      "rank": 15,
+      "riderId": "jai-hindley",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "75:19:54",
+      "totalSeconds": 271194,
+      "gapSeconds": 5008,
+      "gap": "1:23:28"
+    },
+    {
+      "id": 16,
+      "rank": 16,
+      "riderId": "nicolas-prodhomme",
+      "teamId": "decathlon-cma-cgm",
+      "time": "75:21:27",
+      "totalSeconds": 271287,
+      "gapSeconds": 5101,
+      "gap": "1:25:01"
+    },
+    {
+      "id": 17,
+      "rank": 17,
+      "riderId": "tiesj-benoot",
+      "teamId": "decathlon-cma-cgm",
+      "time": "75:29:22",
+      "totalSeconds": 271762,
+      "gapSeconds": 5576,
+      "gap": "1:32:56"
+    },
+    {
+      "id": 18,
+      "rank": 18,
+      "riderId": "quinn-simmons",
+      "teamId": "lidl-trek",
+      "time": "75:31:54",
+      "totalSeconds": 271914,
+      "gapSeconds": 5728,
+      "gap": "1:35:28"
+    },
+    {
+      "id": 19,
+      "rank": 19,
+      "riderId": "sean-quinn",
+      "teamId": "ef-education-easypost",
+      "time": "75:43:31",
+      "totalSeconds": 272611,
+      "gapSeconds": 6425,
+      "gap": "1:47:05"
+    },
+    {
+      "id": 20,
+      "rank": 20,
+      "riderId": "egan-bernal",
+      "teamId": "netcompany-ineos",
+      "time": "75:44:24",
+      "totalSeconds": 272664,
+      "gapSeconds": 6478,
+      "gap": "1:47:58"
+    },
+    {
+      "id": 21,
+      "rank": 21,
+      "riderId": "adam-yates",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "75:48:25",
+      "totalSeconds": 272905,
+      "gapSeconds": 6719,
+      "gap": "1:51:59"
+    },
+    {
+      "id": 22,
+      "rank": 22,
+      "riderId": "thymen-arensman",
+      "teamId": "netcompany-ineos",
+      "time": "75:59:08",
+      "totalSeconds": 273548,
+      "gapSeconds": 7362,
+      "gap": "2:02:42"
+    },
+    {
+      "id": 23,
+      "rank": 23,
+      "riderId": "carlos-verona",
+      "teamId": "lidl-trek",
+      "time": "76:01:48",
+      "totalSeconds": 273708,
+      "gapSeconds": 7522,
+      "gap": "2:05:22"
+    },
+    {
+      "id": 24,
+      "rank": 24,
+      "riderId": "matthew-riccitello",
+      "teamId": "decathlon-cma-cgm",
+      "time": "76:07:35",
+      "totalSeconds": 274055,
+      "gapSeconds": 7869,
+      "gap": "2:11:09"
+    },
+    {
+      "id": 25,
+      "rank": 25,
+      "riderId": "derek-gee-west",
+      "teamId": "lidl-trek",
+      "time": "76:09:25",
+      "totalSeconds": 274165,
+      "gapSeconds": 7979,
+      "gap": "2:12:59"
+    },
+    {
+      "id": 26,
+      "rank": 26,
+      "riderId": "harold-tejada",
+      "teamId": "xds-astana-team",
+      "time": "76:16:13",
+      "totalSeconds": 274573,
+      "gapSeconds": 8387,
+      "gap": "2:19:47"
+    },
+    {
+      "id": 27,
+      "rank": 27,
+      "riderId": "maxim-van-gils",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "76:20:35",
+      "totalSeconds": 274835,
+      "gapSeconds": 8649,
+      "gap": "2:24:09"
+    },
+    {
+      "id": 28,
+      "rank": 28,
+      "riderId": "ben-o-connor",
+      "teamId": "team-jayco-alula",
+      "time": "76:28:04",
+      "totalSeconds": 275284,
+      "gapSeconds": 9098,
+      "gap": "2:31:38"
+    },
+    {
+      "id": 29,
+      "rank": 29,
+      "riderId": "pablo-castrillo",
+      "teamId": "movistar-team",
+      "time": "76:28:09",
+      "totalSeconds": 275289,
+      "gapSeconds": 9103,
+      "gap": "2:31:43"
+    },
+    {
+      "id": 30,
+      "rank": 30,
+      "riderId": "matteo-jorgenson",
+      "teamId": "visma-lease-a-bike",
+      "time": "76:29:55",
+      "totalSeconds": 275395,
+      "gapSeconds": 9209,
+      "gap": "2:33:29"
+    },
+    {
+      "id": 31,
+      "rank": 31,
+      "riderId": "guillaume-martin",
+      "teamId": "groupama-fdj-united",
+      "time": "76:30:41",
+      "totalSeconds": 275441,
+      "gapSeconds": 9255,
+      "gap": "2:34:15"
+    },
+    {
+      "id": 32,
+      "rank": 32,
+      "riderId": "felix-grossschartner",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "76:39:48",
+      "totalSeconds": 275988,
+      "gapSeconds": 9802,
+      "gap": "2:43:22"
+    },
+    {
+      "id": 33,
+      "rank": 33,
+      "riderId": "mattia-cattaneo",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "76:47:45",
+      "totalSeconds": 276465,
+      "gapSeconds": 10279,
+      "gap": "2:51:19"
+    },
+    {
+      "id": 34,
+      "rank": 34,
+      "riderId": "raul-garcia-pierna",
+      "teamId": "movistar-team",
+      "time": "76:48:58",
+      "totalSeconds": 276538,
+      "gapSeconds": 10352,
+      "gap": "2:52:32"
+    },
+    {
+      "id": 35,
+      "rank": 35,
+      "riderId": "mauro-schmid",
+      "teamId": "team-jayco-alula",
+      "time": "76:49:55",
+      "totalSeconds": 276595,
+      "gapSeconds": 10409,
+      "gap": "2:53:29"
+    },
+    {
+      "id": 36,
+      "rank": 36,
+      "riderId": "kevin-vauquelin",
+      "teamId": "netcompany-ineos",
+      "time": "76:57:43",
+      "totalSeconds": 277063,
+      "gapSeconds": 10877,
+      "gap": "3:01:17"
+    },
+    {
+      "id": 37,
+      "rank": 37,
+      "riderId": "antonio-tiberi",
+      "teamId": "team-bahrain-victorious",
+      "time": "77:00:18",
+      "totalSeconds": 277218,
+      "gapSeconds": 11032,
+      "gap": "3:03:52"
+    },
+    {
+      "id": 38,
+      "rank": 38,
+      "riderId": "sergio-higuita",
+      "teamId": "xds-astana-team",
+      "time": "77:01:01",
+      "totalSeconds": 277261,
+      "gapSeconds": 11075,
+      "gap": "3:04:35"
+    },
+    {
+      "id": 39,
+      "rank": 39,
+      "riderId": "quinten-hermans",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "77:01:49",
+      "totalSeconds": 277309,
+      "gapSeconds": 11123,
+      "gap": "3:05:23"
+    },
+    {
+      "id": 40,
+      "rank": 40,
+      "riderId": "clement-braz-afonso",
+      "teamId": "groupama-fdj-united",
+      "time": "77:02:49",
+      "totalSeconds": 277369,
+      "gapSeconds": 11183,
+      "gap": "3:06:23"
+    },
+    {
+      "id": 41,
+      "rank": 41,
+      "riderId": "lennert-van-eetvelt",
+      "teamId": "lotto-intermarche",
+      "time": "77:04:48",
+      "totalSeconds": 277488,
+      "gapSeconds": 11302,
+      "gap": "3:08:22"
+    },
+    {
+      "id": 42,
+      "rank": 42,
+      "riderId": "aurelien-paret-peintre",
+      "teamId": "decathlon-cma-cgm",
+      "time": "77:04:54",
+      "totalSeconds": 277494,
+      "gapSeconds": 11308,
+      "gap": "3:08:28"
+    },
+    {
+      "id": 43,
+      "rank": 43,
+      "riderId": "tobias-foss",
+      "teamId": "netcompany-ineos",
+      "time": "77:04:55",
+      "totalSeconds": 277495,
+      "gapSeconds": 11309,
+      "gap": "3:08:29"
+    },
+    {
+      "id": 44,
+      "rank": 44,
+      "riderId": "valentin-paret-peintre",
+      "teamId": "soudal-quick-step",
+      "time": "77:05:47",
+      "totalSeconds": 277547,
+      "gapSeconds": 11361,
+      "gap": "3:09:21"
+    },
+    {
+      "id": 45,
+      "rank": 45,
+      "riderId": "ion-izagirre",
+      "teamId": "cofidis",
+      "time": "77:06:39",
+      "totalSeconds": 277599,
+      "gapSeconds": 11413,
+      "gap": "3:10:13"
+    },
+    {
+      "id": 46,
+      "rank": 46,
+      "riderId": "alex-baudin",
+      "teamId": "ef-education-easypost",
+      "time": "77:08:07",
+      "totalSeconds": 277687,
+      "gapSeconds": 11501,
+      "gap": "3:11:41"
+    },
+    {
+      "id": 47,
+      "rank": 47,
+      "riderId": "abel-balderstone",
+      "teamId": "caja-rural-seguros-rga",
+      "time": "77:20:52",
+      "totalSeconds": 278452,
+      "gapSeconds": 12266,
+      "gap": "3:24:26"
+    },
+    {
+      "id": 48,
+      "rank": 48,
+      "riderId": "marc-hirschi",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "77:26:25",
+      "totalSeconds": 278785,
+      "gapSeconds": 12599,
+      "gap": "3:29:59"
+    },
+    {
+      "id": 49,
+      "rank": 49,
+      "riderId": "mathias-vacek",
+      "teamId": "lidl-trek",
+      "time": "77:31:02",
+      "totalSeconds": 279062,
+      "gapSeconds": 12876,
+      "gap": "3:34:36"
+    },
+    {
+      "id": 50,
+      "rank": 50,
+      "riderId": "nicolas-breuillard",
+      "teamId": "team-totalenergies",
+      "time": "77:31:02",
+      "totalSeconds": 279062,
+      "gapSeconds": 12876,
+      "gap": "3:34:36"
+    },
+    {
+      "id": 51,
+      "rank": 51,
+      "riderId": "joris-delbove",
+      "teamId": "team-totalenergies",
+      "time": "77:33:32",
+      "totalSeconds": 279212,
+      "gapSeconds": 13026,
+      "gap": "3:37:06"
+    },
+    {
+      "id": 52,
+      "rank": 52,
+      "riderId": "michael-matthews",
+      "teamId": "team-jayco-alula",
+      "time": "77:34:01",
+      "totalSeconds": 279241,
+      "gapSeconds": 13055,
+      "gap": "3:37:35"
+    },
+    {
+      "id": 53,
+      "rank": 53,
+      "riderId": "michael-valgren",
+      "teamId": "ef-education-easypost",
+      "time": "77:35:35",
+      "totalSeconds": 279335,
+      "gapSeconds": 13149,
+      "gap": "3:39:09"
+    },
+    {
+      "id": 54,
+      "rank": 54,
+      "riderId": "javier-romo",
+      "teamId": "movistar-team",
+      "time": "77:38:15",
+      "totalSeconds": 279495,
+      "gapSeconds": 13309,
+      "gap": "3:41:49"
+    },
+    {
+      "id": 55,
+      "rank": 55,
+      "riderId": "damiano-caruso",
+      "teamId": "team-bahrain-victorious",
+      "time": "77:43:09",
+      "totalSeconds": 279789,
+      "gapSeconds": 13603,
+      "gap": "3:46:43"
+    },
+    {
+      "id": 56,
+      "rank": 56,
+      "riderId": "xandro-meurisse",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "77:45:39",
+      "totalSeconds": 279939,
+      "gapSeconds": 13753,
+      "gap": "3:49:13"
+    },
+    {
+      "id": 57,
+      "rank": 57,
+      "riderId": "romain-gregoire",
+      "teamId": "groupama-fdj-united",
+      "time": "77:46:26",
+      "totalSeconds": 279986,
+      "gapSeconds": 13800,
+      "gap": "3:50:00"
+    },
+    {
+      "id": 58,
+      "rank": 58,
+      "riderId": "quentin-pacher",
+      "teamId": "groupama-fdj-united",
+      "time": "77:46:55",
+      "totalSeconds": 280015,
+      "gapSeconds": 13829,
+      "gap": "3:50:29"
+    },
+    {
+      "id": 59,
+      "rank": 59,
+      "riderId": "ben-healy",
+      "teamId": "ef-education-easypost",
+      "time": "77:47:29",
+      "totalSeconds": 280049,
+      "gapSeconds": 13863,
+      "gap": "3:51:03"
+    },
+    {
+      "id": 60,
+      "rank": 60,
+      "riderId": "anders-skaarseth",
+      "teamId": "uno-x-mobility",
+      "time": "77:59:33",
+      "totalSeconds": 280773,
+      "gapSeconds": 14587,
+      "gap": "4:03:07"
+    },
+    {
+      "id": 61,
+      "rank": 61,
+      "riderId": "alexandre-delettre",
+      "teamId": "team-totalenergies",
+      "time": "77:59:42",
+      "totalSeconds": 280782,
+      "gapSeconds": 14596,
+      "gap": "4:03:16"
+    },
+    {
+      "id": 62,
+      "rank": 62,
+      "riderId": "bruno-armirail",
+      "teamId": "visma-lease-a-bike",
+      "time": "77:59:52",
+      "totalSeconds": 280792,
+      "gapSeconds": 14606,
+      "gap": "4:03:26"
+    },
+    {
+      "id": 63,
+      "rank": 63,
+      "riderId": "michael-storer",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "78:08:03",
+      "totalSeconds": 281283,
+      "gapSeconds": 15097,
+      "gap": "4:11:37"
+    },
+    {
+      "id": 64,
+      "rank": 64,
+      "riderId": "anders-halland-johannessen",
+      "teamId": "uno-x-mobility",
+      "time": "78:11:08",
+      "totalSeconds": 281468,
+      "gapSeconds": 15282,
+      "gap": "4:14:42"
+    },
+    {
+      "id": 65,
+      "rank": 65,
+      "riderId": "nelson-oliveira",
+      "teamId": "movistar-team",
+      "time": "78:14:22",
+      "totalSeconds": 281662,
+      "gapSeconds": 15476,
+      "gap": "4:17:56"
+    },
+    {
+      "id": 66,
+      "rank": 66,
+      "riderId": "vlad-van-mechelen",
+      "teamId": "team-bahrain-victorious",
+      "time": "78:14:33",
+      "totalSeconds": 281673,
+      "gapSeconds": 15487,
+      "gap": "4:18:07"
+    },
+    {
+      "id": 67,
+      "rank": 67,
+      "riderId": "louis-vervaeke",
+      "teamId": "soudal-quick-step",
+      "time": "78:15:04",
+      "totalSeconds": 281704,
+      "gapSeconds": 15518,
+      "gap": "4:18:38"
+    },
+    {
+      "id": 68,
+      "rank": 68,
+      "riderId": "george-bennett",
+      "teamId": "nsn-cycling-team",
+      "time": "78:15:08",
+      "totalSeconds": 281708,
+      "gapSeconds": 15522,
+      "gap": "4:18:42"
+    },
+    {
+      "id": 69,
+      "rank": 69,
+      "riderId": "clement-russo",
+      "teamId": "groupama-fdj-united",
+      "time": "78:16:51",
+      "totalSeconds": 281811,
+      "gapSeconds": 15625,
+      "gap": "4:20:25"
+    },
+    {
+      "id": 70,
+      "rank": 70,
+      "riderId": "felix-engelhardt",
+      "teamId": "team-jayco-alula",
+      "time": "78:18:57",
+      "totalSeconds": 281937,
+      "gapSeconds": 15751,
+      "gap": "4:22:31"
+    },
+    {
+      "id": 71,
+      "rank": 71,
+      "riderId": "jasper-stuyven",
+      "teamId": "soudal-quick-step",
+      "time": "78:19:15",
+      "totalSeconds": 281955,
+      "gapSeconds": 15769,
+      "gap": "4:22:49"
+    },
+    {
+      "id": 72,
+      "rank": 72,
+      "riderId": "nils-politt",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "78:19:56",
+      "totalSeconds": 281996,
+      "gapSeconds": 15810,
+      "gap": "4:23:30"
+    },
+    {
+      "id": 73,
+      "rank": 73,
+      "riderId": "rick-pluimers",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "78:20:57",
+      "totalSeconds": 282057,
+      "gapSeconds": 15871,
+      "gap": "4:24:31"
+    },
+    {
+      "id": 74,
+      "rank": 74,
+      "riderId": "tim-wellens",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "78:21:54",
+      "totalSeconds": 282114,
+      "gapSeconds": 15928,
+      "gap": "4:25:28"
+    },
+    {
+      "id": 75,
+      "rank": 75,
+      "riderId": "mathieu-van-der-poel",
+      "teamId": "alpecin-premier-tech",
+      "time": "78:22:54",
+      "totalSeconds": 282174,
+      "gapSeconds": 15988,
+      "gap": "4:26:28"
+    },
+    {
+      "id": 76,
+      "rank": 76,
+      "riderId": "mathis-le-berre",
+      "teamId": "team-totalenergies",
+      "time": "78:23:15",
+      "totalSeconds": 282195,
+      "gapSeconds": 16009,
+      "gap": "4:26:49"
+    },
+    {
+      "id": 77,
+      "rank": 77,
+      "riderId": "jonas-abrahamsen",
+      "teamId": "uno-x-mobility",
+      "time": "78:26:49",
+      "totalSeconds": 282409,
+      "gapSeconds": 16223,
+      "gap": "4:30:23"
+    },
+    {
+      "id": 78,
+      "rank": 78,
+      "riderId": "marco-frigo",
+      "teamId": "nsn-cycling-team",
+      "time": "78:28:30",
+      "totalSeconds": 282510,
+      "gapSeconds": 16324,
+      "gap": "4:32:04"
+    },
+    {
+      "id": 79,
+      "rank": 79,
+      "riderId": "ewen-costiou",
+      "teamId": "groupama-fdj-united",
+      "time": "78:28:49",
+      "totalSeconds": 282529,
+      "gapSeconds": 16343,
+      "gap": "4:32:23"
+    },
+    {
+      "id": 80,
+      "rank": 80,
+      "riderId": "mads-pedersen",
+      "teamId": "lidl-trek",
+      "time": "78:29:31",
+      "totalSeconds": 282571,
+      "gapSeconds": 16385,
+      "gap": "4:33:05"
+    },
+    {
+      "id": 81,
+      "rank": 81,
+      "riderId": "brent-van-moer",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "78:29:40",
+      "totalSeconds": 282580,
+      "gapSeconds": 16394,
+      "gap": "4:33:14"
+    },
+    {
+      "id": 82,
+      "rank": 82,
+      "riderId": "victor-campenaerts",
+      "teamId": "visma-lease-a-bike",
+      "time": "78:30:43",
+      "totalSeconds": 282643,
+      "gapSeconds": 16457,
+      "gap": "4:34:17"
+    },
+    {
+      "id": 83,
+      "rank": 83,
+      "riderId": "jan-tratnik",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "78:30:50",
+      "totalSeconds": 282650,
+      "gapSeconds": 16464,
+      "gap": "4:34:24"
+    },
+    {
+      "id": 84,
+      "rank": 84,
+      "riderId": "kasper-asgreen",
+      "teamId": "ef-education-easypost",
+      "time": "78:32:03",
+      "totalSeconds": 282723,
+      "gapSeconds": 16537,
+      "gap": "4:35:37"
+    },
+    {
+      "id": 85,
+      "rank": 85,
+      "riderId": "alex-aranburu",
+      "teamId": "cofidis",
+      "time": "78:34:21",
+      "totalSeconds": 282861,
+      "gapSeconds": 16675,
+      "gap": "4:37:55"
+    },
+    {
+      "id": 86,
+      "rank": 86,
+      "riderId": "matteo-vercher",
+      "teamId": "team-totalenergies",
+      "time": "78:35:10",
+      "totalSeconds": 282910,
+      "gapSeconds": 16724,
+      "gap": "4:38:44"
+    },
+    {
+      "id": 87,
+      "rank": 87,
+      "riderId": "warren-barguil",
+      "teamId": "team-picnic-postnl",
+      "time": "78:36:29",
+      "totalSeconds": 282989,
+      "gapSeconds": 16803,
+      "gap": "4:40:03"
+    },
+    {
+      "id": 88,
+      "rank": 88,
+      "riderId": "damien-howson",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "78:38:04",
+      "totalSeconds": 283084,
+      "gapSeconds": 16898,
+      "gap": "4:41:38"
+    },
+    {
+      "id": 89,
+      "rank": 89,
+      "riderId": "sebastian-berwick",
+      "teamId": "caja-rural-seguros-rga",
+      "time": "78:40:30",
+      "totalSeconds": 283230,
+      "gapSeconds": 17044,
+      "gap": "4:44:04"
+    },
+    {
+      "id": 90,
+      "rank": 90,
+      "riderId": "georg-zimmermann",
+      "teamId": "lotto-intermarche",
+      "time": "78:40:47",
+      "totalSeconds": 283247,
+      "gapSeconds": 17061,
+      "gap": "4:44:21"
+    },
+    {
+      "id": 91,
+      "rank": 91,
+      "riderId": "luke-plapp",
+      "teamId": "team-jayco-alula",
+      "time": "78:40:56",
+      "totalSeconds": 283256,
+      "gapSeconds": 17070,
+      "gap": "4:44:30"
+    },
+    {
+      "id": 92,
+      "rank": 92,
+      "riderId": "matej-mohoric",
+      "teamId": "team-bahrain-victorious",
+      "time": "78:40:56",
+      "totalSeconds": 283256,
+      "gapSeconds": 17070,
+      "gap": "4:44:30"
+    },
+    {
+      "id": 93,
+      "rank": 93,
+      "riderId": "lorenzo-germani",
+      "teamId": "groupama-fdj-united",
+      "time": "78:44:44",
+      "totalSeconds": 283484,
+      "gapSeconds": 17298,
+      "gap": "4:48:18"
+    },
+    {
+      "id": 94,
+      "rank": 94,
+      "riderId": "toms-skujins",
+      "teamId": "lidl-trek",
+      "time": "78:46:05",
+      "totalSeconds": 283565,
+      "gapSeconds": 17379,
+      "gap": "4:49:39"
+    },
+    {
+      "id": 95,
+      "rank": 95,
+      "riderId": "nico-denz",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "78:48:42",
+      "totalSeconds": 283722,
+      "gapSeconds": 17536,
+      "gap": "4:52:16"
+    },
+    {
+      "id": 96,
+      "rank": 96,
+      "riderId": "emiel-verstrynge",
+      "teamId": "alpecin-premier-tech",
+      "time": "78:53:37",
+      "totalSeconds": 284017,
+      "gapSeconds": 17831,
+      "gap": "4:57:11"
+    },
+    {
+      "id": 97,
+      "rank": 97,
+      "riderId": "magnus-cort",
+      "teamId": "uno-x-mobility",
+      "time": "78:54:23",
+      "totalSeconds": 284063,
+      "gapSeconds": 17877,
+      "gap": "4:57:57"
+    },
+    {
+      "id": 98,
+      "rank": 98,
+      "riderId": "nicolas-vinokurov",
+      "teamId": "xds-astana-team",
+      "time": "78:57:38",
+      "totalSeconds": 284258,
+      "gapSeconds": 18072,
+      "gap": "5:01:12"
+    },
+    {
+      "id": 99,
+      "rank": 99,
+      "riderId": "xabier-azparren",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "78:59:20",
+      "totalSeconds": 284360,
+      "gapSeconds": 18174,
+      "gap": "5:02:54"
+    },
+    {
+      "id": 100,
+      "rank": 100,
+      "riderId": "simone-velasco",
+      "teamId": "xds-astana-team",
+      "time": "79:00:41",
+      "totalSeconds": 284441,
+      "gapSeconds": 18255,
+      "gap": "5:04:15"
+    },
+    {
+      "id": 101,
+      "rank": 101,
+      "riderId": "jefferson-alveiro-cepeda",
+      "teamId": "movistar-team",
+      "time": "79:01:08",
+      "totalSeconds": 284468,
+      "gapSeconds": 18282,
+      "gap": "5:04:42"
+    },
+    {
+      "id": 102,
+      "rank": 102,
+      "riderId": "frank-van-den-broek",
+      "teamId": "team-picnic-postnl",
+      "time": "79:04:02",
+      "totalSeconds": 284642,
+      "gapSeconds": 18456,
+      "gap": "5:07:36"
+    },
+    {
+      "id": 103,
+      "rank": 103,
+      "riderId": "per-strand-hagenes",
+      "teamId": "visma-lease-a-bike",
+      "time": "79:04:11",
+      "totalSeconds": 284651,
+      "gapSeconds": 18465,
+      "gap": "5:07:45"
+    },
+    {
+      "id": 104,
+      "rank": 104,
+      "riderId": "michel-hessmann",
+      "teamId": "movistar-team",
+      "time": "79:07:54",
+      "totalSeconds": 284874,
+      "gapSeconds": 18688,
+      "gap": "5:11:28"
+    },
+    {
+      "id": 105,
+      "rank": 105,
+      "riderId": "robert-stannard",
+      "teamId": "team-bahrain-victorious",
+      "time": "79:09:38",
+      "totalSeconds": 284978,
+      "gapSeconds": 18792,
+      "gap": "5:13:12"
+    },
+    {
+      "id": 106,
+      "rank": 106,
+      "riderId": "max-walker",
+      "teamId": "ef-education-easypost",
+      "time": "79:09:45",
+      "totalSeconds": 284985,
+      "gapSeconds": 18799,
+      "gap": "5:13:19"
+    },
+    {
+      "id": 107,
+      "rank": 107,
+      "riderId": "luke-durbridge",
+      "teamId": "team-jayco-alula",
+      "time": "79:09:52",
+      "totalSeconds": 284992,
+      "gapSeconds": 18806,
+      "gap": "5:13:26"
+    },
+    {
+      "id": 108,
+      "rank": 108,
+      "riderId": "anthony-turgis",
+      "teamId": "team-totalenergies",
+      "time": "79:11:21",
+      "totalSeconds": 285081,
+      "gapSeconds": 18895,
+      "gap": "5:14:55"
+    },
+    {
+      "id": 109,
+      "rank": 109,
+      "riderId": "thibault-guernalec",
+      "teamId": "team-totalenergies",
+      "time": "79:11:53",
+      "totalSeconds": 285113,
+      "gapSeconds": 18927,
+      "gap": "5:15:27"
+    },
+    {
+      "id": 110,
+      "rank": 110,
+      "riderId": "michal-kwiatkowski",
+      "teamId": "netcompany-ineos",
+      "time": "79:12:05",
+      "totalSeconds": 285125,
+      "gapSeconds": 18939,
+      "gap": "5:15:39"
+    },
+    {
+      "id": 111,
+      "rank": 111,
+      "riderId": "tim-van-dijke",
+      "teamId": "red-bull-bora-hansgrohe",
+      "time": "79:13:09",
+      "totalSeconds": 285189,
+      "gapSeconds": 19003,
+      "gap": "5:16:43"
+    },
+    {
+      "id": 112,
+      "rank": 112,
+      "riderId": "jakub-otruba",
+      "teamId": "caja-rural-seguros-rga",
+      "time": "79:13:49",
+      "totalSeconds": 285229,
+      "gapSeconds": 19043,
+      "gap": "5:17:23"
+    },
+    {
+      "id": 113,
+      "rank": 113,
+      "riderId": "georg-steinhauser",
+      "teamId": "ef-education-easypost",
+      "time": "79:16:05",
+      "totalSeconds": 285365,
+      "gapSeconds": 19179,
+      "gap": "5:19:39"
+    },
+    {
+      "id": 114,
+      "rank": 114,
+      "riderId": "edward-planckaert",
+      "teamId": "alpecin-premier-tech",
+      "time": "79:20:44",
+      "totalSeconds": 285644,
+      "gapSeconds": 19458,
+      "gap": "5:24:18"
+    },
+    {
+      "id": 115,
+      "rank": 115,
+      "riderId": "jonas-rickaert",
+      "teamId": "alpecin-premier-tech",
+      "time": "79:21:05",
+      "totalSeconds": 285665,
+      "gapSeconds": 19479,
+      "gap": "5:24:39"
+    },
+    {
+      "id": 116,
+      "rank": 116,
+      "riderId": "florian-vermeersch",
+      "teamId": "uae-team-emirates-xrg",
+      "time": "79:23:15",
+      "totalSeconds": 285795,
+      "gapSeconds": 19609,
+      "gap": "5:26:49"
+    },
+    {
+      "id": 117,
+      "rank": 117,
+      "riderId": "benjamin-thomas",
+      "teamId": "cofidis",
+      "time": "79:23:31",
+      "totalSeconds": 285811,
+      "gapSeconds": 19625,
+      "gap": "5:27:05"
+    },
+    {
+      "id": 118,
+      "rank": 118,
+      "riderId": "robbe-dhondt",
+      "teamId": "team-picnic-postnl",
+      "time": "79:23:42",
+      "totalSeconds": 285822,
+      "gapSeconds": 19636,
+      "gap": "5:27:16"
+    },
+    {
+      "id": 119,
+      "rank": 119,
+      "riderId": "hugo-page",
+      "teamId": "cofidis",
+      "time": "79:24:22",
+      "totalSeconds": 285862,
+      "gapSeconds": 19676,
+      "gap": "5:27:56"
+    },
+    {
+      "id": 120,
+      "rank": 120,
+      "riderId": "josh-tarling",
+      "teamId": "netcompany-ineos",
+      "time": "79:24:54",
+      "totalSeconds": 285894,
+      "gapSeconds": 19708,
+      "gap": "5:28:28"
+    },
+    {
+      "id": 121,
+      "rank": 121,
+      "riderId": "aaron-gate",
+      "teamId": "xds-astana-team",
+      "time": "79:25:22",
+      "totalSeconds": 285922,
+      "gapSeconds": 19736,
+      "gap": "5:28:56"
+    },
+    {
+      "id": 122,
+      "rank": 122,
+      "riderId": "alex-kirsch",
+      "teamId": "cofidis",
+      "time": "79:26:31",
+      "totalSeconds": 285991,
+      "gapSeconds": 19805,
+      "gap": "5:30:05"
+    },
+    {
+      "id": 123,
+      "rank": 123,
+      "riderId": "filippo-ganna",
+      "teamId": "netcompany-ineos",
+      "time": "79:27:26",
+      "totalSeconds": 286046,
+      "gapSeconds": 19860,
+      "gap": "5:31:00"
+    },
+    {
+      "id": 124,
+      "rank": 124,
+      "riderId": "mike-teunissen",
+      "teamId": "xds-astana-team",
+      "time": "79:28:24",
+      "totalSeconds": 286104,
+      "gapSeconds": 19918,
+      "gap": "5:31:58"
+    },
+    {
+      "id": 125,
+      "rank": 125,
+      "riderId": "julian-alaphilippe",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "79:29:33",
+      "totalSeconds": 286173,
+      "gapSeconds": 19987,
+      "gap": "5:33:07"
+    },
+    {
+      "id": 126,
+      "rank": 126,
+      "riderId": "stefano-oldani",
+      "teamId": "caja-rural-seguros-rga",
+      "time": "79:30:00",
+      "totalSeconds": 286200,
+      "gapSeconds": 20014,
+      "gap": "5:33:34"
+    },
+    {
+      "id": 127,
+      "rank": 127,
+      "riderId": "fred-wright",
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "time": "79:32:47",
+      "totalSeconds": 286367,
+      "gapSeconds": 20181,
+      "gap": "5:36:21"
+    },
+    {
+      "id": 128,
+      "rank": 128,
+      "riderId": "liam-slock",
+      "teamId": "lotto-intermarche",
+      "time": "79:33:06",
+      "totalSeconds": 286386,
+      "gapSeconds": 20200,
+      "gap": "5:36:40"
+    },
+    {
+      "id": 129,
+      "rank": 129,
+      "riderId": "joel-nicolau",
+      "teamId": "caja-rural-seguros-rga",
+      "time": "79:33:33",
+      "totalSeconds": 286413,
+      "gapSeconds": 20227,
+      "gap": "5:37:07"
+    },
+    {
+      "id": 130,
+      "rank": 130,
+      "riderId": "daan-hoole",
+      "teamId": "decathlon-cma-cgm",
+      "time": "79:34:30",
+      "totalSeconds": 286470,
+      "gapSeconds": 20284,
+      "gap": "5:38:04"
+    },
+    {
+      "id": 131,
+      "rank": 131,
+      "riderId": "dylan-van-baarle",
+      "teamId": "soudal-quick-step",
+      "time": "79:35:19",
+      "totalSeconds": 286519,
+      "gapSeconds": 20333,
+      "gap": "5:38:53"
+    },
+    {
+      "id": 132,
+      "rank": 132,
+      "riderId": "huub-artz",
+      "teamId": "lotto-intermarche",
+      "time": "79:39:00",
+      "totalSeconds": 286740,
+      "gapSeconds": 20554,
+      "gap": "5:42:34"
+    },
+    {
+      "id": 133,
+      "rank": 133,
+      "riderId": "tim-marsman",
+      "teamId": "alpecin-premier-tech",
+      "time": "79:39:37",
+      "totalSeconds": 286777,
+      "gapSeconds": 20591,
+      "gap": "5:43:11"
+    },
+    {
+      "id": 134,
+      "rank": 134,
+      "riderId": "krists-neilands",
+      "teamId": "nsn-cycling-team",
+      "time": "79:40:24",
+      "totalSeconds": 286824,
+      "gapSeconds": 20638,
+      "gap": "5:43:58"
+    },
+    {
+      "id": 135,
+      "rank": 135,
+      "riderId": "jasper-philipsen",
+      "teamId": "alpecin-premier-tech",
+      "time": "79:41:01",
+      "totalSeconds": 286861,
+      "gapSeconds": 20675,
+      "gap": "5:44:35"
+    },
+    {
+      "id": 136,
+      "rank": 136,
+      "riderId": "dorian-godon",
+      "teamId": "netcompany-ineos",
+      "time": "79:43:20",
+      "totalSeconds": 287000,
+      "gapSeconds": 20814,
+      "gap": "5:46:54"
+    },
+    {
+      "id": 137,
+      "rank": 137,
+      "riderId": "silvan-dillier",
+      "teamId": "alpecin-premier-tech",
+      "time": "79:45:02",
+      "totalSeconds": 287102,
+      "gapSeconds": 20916,
+      "gap": "5:48:36"
+    },
+    {
+      "id": 138,
+      "rank": 138,
+      "riderId": "soren-waerenskjold",
+      "teamId": "uno-x-mobility",
+      "time": "79:45:04",
+      "totalSeconds": 287104,
+      "gapSeconds": 20918,
+      "gap": "5:48:38"
+    },
+    {
+      "id": 139,
+      "rank": 139,
+      "riderId": "niklas-markl",
+      "teamId": "team-picnic-postnl",
+      "time": "79:47:57",
+      "totalSeconds": 287277,
+      "gapSeconds": 21091,
+      "gap": "5:51:31"
+    },
+    {
+      "id": 140,
+      "rank": 140,
+      "riderId": "pavel-bittner",
+      "teamId": "team-picnic-postnl",
+      "time": "79:48:17",
+      "totalSeconds": 287297,
+      "gapSeconds": 21111,
+      "gap": "5:51:51"
+    },
+    {
+      "id": 141,
+      "rank": 141,
+      "riderId": "biniam-girmay",
+      "teamId": "nsn-cycling-team",
+      "time": "79:50:46",
+      "totalSeconds": 287446,
+      "gapSeconds": 21260,
+      "gap": "5:54:20"
+    },
+    {
+      "id": 142,
+      "rank": 142,
+      "riderId": "max-kanter",
+      "teamId": "xds-astana-team",
+      "time": "79:51:55",
+      "totalSeconds": 287515,
+      "gapSeconds": 21329,
+      "gap": "5:55:29"
+    },
+    {
+      "id": 143,
+      "rank": 143,
+      "riderId": "pascal-eenkhoorn",
+      "teamId": "soudal-quick-step",
+      "time": "79:53:44",
+      "totalSeconds": 287624,
+      "gapSeconds": 21438,
+      "gap": "5:57:18"
+    },
+    {
+      "id": 144,
+      "rank": 144,
+      "riderId": "jenthe-biermans",
+      "teamId": "cofidis",
+      "time": "79:58:10",
+      "totalSeconds": 287890,
+      "gapSeconds": 21704,
+      "gap": "6:01:44"
+    },
+    {
+      "id": 145,
+      "rank": 145,
+      "riderId": "john-degenkolb",
+      "teamId": "team-picnic-postnl",
+      "time": "79:58:10",
+      "totalSeconds": 287890,
+      "gapSeconds": 21704,
+      "gap": "6:01:44"
+    },
+    {
+      "id": 146,
+      "rank": 146,
+      "riderId": "baptiste-veistroffer",
+      "teamId": "lotto-intermarche",
+      "time": "79:58:40",
+      "totalSeconds": 287920,
+      "gapSeconds": 21734,
+      "gap": "6:02:14"
+    },
+    {
+      "id": 147,
+      "rank": 147,
+      "riderId": "marco-haller",
+      "teamId": "tudor-pro-cycling-team",
+      "time": "79:58:46",
+      "totalSeconds": 287926,
+      "gapSeconds": 21740,
+      "gap": "6:02:20"
+    },
+    {
+      "id": 148,
+      "rank": 148,
+      "riderId": "milan-fretin",
+      "teamId": "cofidis",
+      "time": "80:02:36",
+      "totalSeconds": 288156,
+      "gapSeconds": 21970,
+      "gap": "6:06:10"
+    },
+    {
+      "id": 149,
+      "rank": 149,
+      "riderId": "olav-kooij",
+      "teamId": "decathlon-cma-cgm",
+      "time": "80:05:44",
+      "totalSeconds": 288344,
+      "gapSeconds": 22158,
+      "gap": "6:09:18"
+    },
+    {
+      "id": 150,
+      "rank": 150,
+      "riderId": "jake-stewart",
+      "teamId": "nsn-cycling-team",
+      "time": "80:07:13",
+      "totalSeconds": 288433,
+      "gapSeconds": 22247,
+      "gap": "6:10:47"
+    },
+    {
+      "id": 151,
+      "rank": 151,
+      "riderId": "lewis-askey",
+      "teamId": "nsn-cycling-team",
+      "time": "80:07:14",
+      "totalSeconds": 288434,
+      "gapSeconds": 22248,
+      "gap": "6:10:48"
+    },
+    {
+      "id": 152,
+      "rank": 152,
+      "riderId": "davide-ballerini",
+      "teamId": "xds-astana-team",
+      "time": "80:07:48",
+      "totalSeconds": 288468,
+      "gapSeconds": 22282,
+      "gap": "6:11:22"
+    },
+    {
+      "id": 153,
+      "rank": 153,
+      "riderId": "piet-allegaert",
+      "teamId": "cofidis",
+      "time": "80:08:48",
+      "totalSeconds": 288528,
+      "gapSeconds": 22342,
+      "gap": "6:12:22"
+    },
+    {
+      "id": 154,
+      "rank": 154,
+      "riderId": "phil-bauhaus",
+      "teamId": "team-bahrain-victorious",
+      "time": "80:10:15",
+      "totalSeconds": 288615,
+      "gapSeconds": 22429,
+      "gap": "6:13:49"
+    },
+    {
+      "id": 155,
+      "rank": 155,
+      "riderId": "kamil-gradek",
+      "teamId": "team-bahrain-victorious",
+      "time": "80:12:38",
+      "totalSeconds": 288758,
+      "gapSeconds": 22572,
+      "gap": "6:16:12"
+    },
+    {
+      "id": 156,
+      "rank": 156,
+      "riderId": "julius-van-den-berg",
+      "teamId": "team-picnic-postnl",
+      "time": "80:13:52",
+      "totalSeconds": 288832,
+      "gapSeconds": 22646,
+      "gap": "6:17:26"
+    },
+    {
+      "id": 157,
+      "rank": 157,
+      "riderId": "matis-louvel",
+      "teamId": "nsn-cycling-team",
+      "time": "80:14:02",
+      "totalSeconds": 288842,
+      "gapSeconds": 22656,
+      "gap": "6:17:36"
+    },
+    {
+      "id": 158,
+      "rank": 158,
+      "riderId": "cees-bol",
+      "teamId": "decathlon-cma-cgm",
+      "time": "80:18:34",
+      "totalSeconds": 289114,
+      "gapSeconds": 22928,
+      "gap": "6:22:08"
+    }
+  ],
+  "points": [
+    {
+      "id": 1,
+      "rank": 1,
+      "riderId": "mads-pedersen",
+      "teamId": "lidl-trek",
+      "points": 559
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "riderId": "jasper-philipsen",
+      "teamId": "alpecin-premier-tech",
+      "points": 475
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "riderId": "biniam-girmay",
+      "teamId": "nsn-cycling-team",
+      "points": 367
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "riderId": "max-kanter",
+      "teamId": "xds-astana-team",
+      "points": 289
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "riderId": "olav-kooij",
+      "teamId": "decathlon-cma-cgm",
+      "points": 246
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "riderId": "tadej-pogacar",
+      "teamId": "uae-team-emirates-xrg",
+      "points": 198
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "riderId": "soren-waerenskjold",
+      "teamId": "uno-x-mobility",
+      "points": 159
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "riderId": "remco-evenepoel",
+      "teamId": "red-bull-bora-hansgrohe",
+      "points": 157
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "riderId": "isaac-del-toro",
+      "teamId": "uae-team-emirates-xrg",
+      "points": 143
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "riderId": "anthony-turgis",
+      "teamId": "team-totalenergies",
+      "points": 139
+    }
+  ],
+  "mountains": [
+    {
+      "id": 1,
+      "rank": 1,
+      "riderId": "richard-carapaz",
+      "teamId": "ef-education-easypost",
+      "points": 156
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "riderId": "tadej-pogacar",
+      "teamId": "uae-team-emirates-xrg",
+      "points": 100
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "riderId": "valentin-paret-peintre",
+      "teamId": "soudal-quick-step",
+      "points": 99
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "riderId": "sepp-kuss",
+      "teamId": "visma-lease-a-bike",
+      "points": 55
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "riderId": "remco-evenepoel",
+      "teamId": "red-bull-bora-hansgrohe",
+      "points": 50
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "riderId": "lenny-martinez",
+      "teamId": "team-bahrain-victorious",
+      "points": 41
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "riderId": "isaac-del-toro",
+      "teamId": "uae-team-emirates-xrg",
+      "points": 40
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "riderId": "paul-seixas",
+      "teamId": "decathlon-cma-cgm",
+      "points": 36
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "riderId": "tobias-halland-johannessen",
+      "teamId": "uno-x-mobility",
+      "points": 29
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "riderId": "jai-hindley",
+      "teamId": "red-bull-bora-hansgrohe",
+      "points": 28
+    }
+  ],
+  "youth": [
+    {
+      "id": 1,
+      "rank": 1,
+      "riderId": "isaac-del-toro",
+      "teamId": "uae-team-emirates-xrg",
+      "totalSeconds": 266768,
+      "gapSeconds": 0,
+      "time": "74:06:08"
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "riderId": "paul-seixas",
+      "teamId": "decathlon-cma-cgm",
+      "gapSeconds": 134,
+      "gap": "2:14"
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "riderId": "lenny-martinez",
+      "teamId": "team-bahrain-victorious",
+      "gapSeconds": 200,
+      "gap": "3:20"
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "riderId": "juan-ayuso",
+      "teamId": "lidl-trek",
+      "gapSeconds": 486,
+      "gap": "8:06"
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "riderId": "davide-piganzoli",
+      "teamId": "visma-lease-a-bike",
+      "gapSeconds": 3241,
+      "gap": "54:01"
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "riderId": "quinn-simmons",
+      "teamId": "lidl-trek",
+      "gapSeconds": 5146,
+      "gap": "1:25:46"
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "riderId": "matthew-riccitello",
+      "teamId": "decathlon-cma-cgm",
+      "gapSeconds": 7287,
+      "gap": "2:01:27"
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "riderId": "pablo-castrillo",
+      "teamId": "movistar-team",
+      "gapSeconds": 8521,
+      "gap": "2:22:01"
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "riderId": "raul-garcia-pierna",
+      "teamId": "movistar-team",
+      "gapSeconds": 9770,
+      "gap": "2:42:50"
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "riderId": "kevin-vauquelin",
+      "teamId": "netcompany-ineos",
+      "gapSeconds": 10295,
+      "gap": "2:51:35"
+    }
+  ],
+  "teamClassification": [
+    {
+      "id": 1,
+      "rank": 1,
+      "teamId": "lidl-trek",
+      "time": "224:57:43",
+      "gapSeconds": 0,
+      "totalSeconds": 809863
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "teamId": "uae-team-emirates-xrg",
+      "gap": "36:57",
+      "gapSeconds": 2217
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "teamId": "red-bull-bora-hansgrohe",
+      "gap": "1:06:22",
+      "gapSeconds": 3982
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "teamId": "decathlon-cma-cgm",
+      "gap": "1:47:44",
+      "gapSeconds": 6464
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "teamId": "visma-lease-a-bike",
+      "gap": "2:18:03",
+      "gapSeconds": 8283
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "teamId": "ef-education-easypost",
+      "gap": "3:38:20",
+      "gapSeconds": 13100
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "teamId": "netcompany-ineos",
+      "gap": "4:49:54",
+      "gapSeconds": 17394
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "teamId": "team-bahrain-victorious",
+      "gap": "5:38:20",
+      "gapSeconds": 20300
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "teamId": "team-totalenergies",
+      "gap": "5:48:37",
+      "gapSeconds": 20917
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "teamId": "pinarello-q36-5-pro-cycling-team",
+      "gap": "5:49:14",
+      "gapSeconds": 20954
+    }
+  ],
+  "gcLead": [
+    {
+      "id": 1,
+      "afterStage": 6,
+      "leaderId": "tadej-pogacar",
+      "secondId": "jonas-vingegaard",
+      "leadSeconds": 162
+    },
+    {
+      "id": 2,
+      "afterStage": 11,
+      "leaderId": "tadej-pogacar",
+      "secondId": "jonas-vingegaard",
+      "leadSeconds": 216
+    },
+    {
+      "id": 3,
+      "afterStage": 12,
+      "leaderId": "tadej-pogacar",
+      "secondId": "jonas-vingegaard",
+      "leadSeconds": 216
+    },
+    {
+      "id": 4,
+      "afterStage": 18,
+      "leaderId": "tadej-pogacar",
+      "secondId": "remco-evenepoel",
+      "leadSeconds": 272
+    },
+    {
+      "id": 5,
+      "afterStage": 21,
+      "leaderId": "tadej-pogacar",
+      "secondId": "remco-evenepoel",
+      "leadSeconds": 386
+    }
+  ]
+}

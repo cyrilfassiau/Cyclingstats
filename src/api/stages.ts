@@ -1,12 +1,22 @@
 import { useQuery } from '@tanstack/react-query'
-import { apiGet } from './client'
-import type { Paginated, Stage } from './types'
+import { apiGetList } from './client'
+import type { Stage, StageType } from './types'
 
-export function useStages(edition: number, page: number) {
+export interface StageFilters {
+  type?: StageType
+  sort?: keyof Stage
+  order?: 'asc' | 'desc'
+}
+
+export function useStages(filters: StageFilters = {}) {
   return useQuery({
-    queryKey: ['stages', edition, page],
+    queryKey: ['stages', filters],
     queryFn: ({ signal }) =>
-      apiGet<Paginated<Stage>>(`/stages?edition=${edition}&page=${page}`, signal),
-    staleTime: 5 * 60 * 1000,
+      apiGetList<Stage>(
+        '/stages',
+        { type: filters.type, _sort: filters.sort, _order: filters.order },
+        signal,
+      ),
+    staleTime: Infinity,
   })
 }
