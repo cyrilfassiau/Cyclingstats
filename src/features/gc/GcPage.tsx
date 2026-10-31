@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { useGc } from '@/api/gc'
 import { useRidersById, useTeamsById } from '@/api/riders'
 import { Pagination } from '@/components/Pagination'
 import { EmptyState, ErrorState, TableSkeleton } from '@/components/QueryState'
-import { useDebouncedValue } from '@/hooks/useDebouncedValue'
+import { useDebouncedUrlSearch } from '@/hooks/useDebouncedUrlSearch'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { oneOf } from '@/lib/params'
 import { filterGcRows, GC_SORTS, parseGcFilters, serializeGcFilters, type GcRow } from './filters'
@@ -18,14 +19,8 @@ export default function GcPage() {
   const teams = useTeamsById()
 
   // La saisie est locale ; l'URL n'est mise à jour qu'après 300 ms sans frappe.
-  const [search, setSearch] = useState(filters.q)
-  const debouncedSearch = useDebouncedValue(search)
-  const lastPushedSearch = useRef(filters.q)
-  useEffect(() => {
-    if (debouncedSearch === lastPushedSearch.current) return
-    lastPushedSearch.current = debouncedSearch
-    setFilters({ q: debouncedSearch, page: 1 })
-  }, [debouncedSearch, setFilters])
+  const pushSearch = useCallback((q: string) => setFilters({ q, page: 1 }), [setFilters])
+  const [search, setSearch] = useDebouncedUrlSearch(filters.q, pushSearch)
 
   const rows = useMemo<GcRow[]>(() => {
     if (!gc.data || !riders.data || !teams.data) return []
@@ -163,7 +158,9 @@ export default function GcPage() {
                 {pageRows.map((row) => (
                   <tr key={row.riderId}>
                     <td className="num">{row.rank}</td>
-                    <td>{row.name}</td>
+                    <td>
+                      <Link to={`/dashboard?rider=${row.riderId}`}>{row.name}</Link>
+                    </td>
                     <td>{row.nationality}</td>
                     <td>{row.teamName}</td>
                     <td className="num">{row.gap ? `+ ${row.gap}` : row.time}</td>

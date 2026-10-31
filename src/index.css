@@ -1,33 +1,70 @@
 :root {
-  --bg: #f7f7f5;
-  --surface: #ffffff;
-  --text: #1c1c1a;
-  --muted: #5d5d58;
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --text: #0b0b0b;
+  --muted: #52514e;
   --border: #dcdcd6;
   --accent: #b38600;
   --accent-text: #6b5000;
   --row-hover: #f1efe6;
   --skeleton: #e6e6e0;
   --danger: #a3261b;
+  /* Graphiques : palette catégorielle validée (ordre fixe), emphase et habillage */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --chart-deemph: #c3c2b7;
+  --chart-grid: #e1e0d9;
+  --chart-axis: #c3c2b7;
   color-scheme: light;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   line-height: 1.5;
 }
 
+/* Thème sombre : préférence système, sauf si l'utilisateur a forcé le clair */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141413;
-    --surface: #1d1d1b;
-    --text: #ecece8;
-    --muted: #a5a59e;
-    --border: #34342f;
-    --accent: #f2c230;
-    --accent-text: #f2c230;
-    --row-hover: #26261f;
-    --skeleton: #2c2c28;
-    --danger: #ff8a7a;
-    color-scheme: dark;
+  :root:not([data-theme='light']) {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text: #f0efec;
+  --muted: #c3c2b7;
+  --border: #34342f;
+  --accent: #f2c230;
+  --accent-text: #f2c230;
+  --row-hover: #26261f;
+  --skeleton: #2c2c28;
+  --danger: #ff8a7a;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --chart-deemph: #4a4a45;
+  --chart-grid: #2c2c2a;
+  --chart-axis: #383835;
+  color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text: #f0efec;
+  --muted: #c3c2b7;
+  --border: #34342f;
+  --accent: #f2c230;
+  --accent-text: #f2c230;
+  --row-hover: #26261f;
+  --skeleton: #2c2c28;
+  --danger: #ff8a7a;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --chart-deemph: #4a4a45;
+  --chart-grid: #2c2c2a;
+  --chart-axis: #383835;
+  color-scheme: dark;
 }
 
 * {
@@ -282,4 +319,145 @@ tbody tr:last-child td {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+.app-header nav {
+  flex-wrap: wrap;
+}
+
+.count {
+  display: inline-block;
+  min-width: 1.25rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #0b0b0b;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.icon-button {
+  padding: 0.2rem 0.5rem;
+  line-height: 1;
+}
+
+.icon-button[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+
+button[aria-pressed='true'] {
+  border-color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
+.rider-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rider-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  max-width: 20rem;
+}
+
+.rider-card-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.rider-card-head h2 {
+  margin: 0;
+}
+
+.rider-card .facts {
+  margin-bottom: 0;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.chart-card {
+  margin: 0;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.chart-card h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.chart-card figcaption .note {
+  margin: 0.25rem 0 0.75rem;
+}
+
+.chart-card details {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.chart-card summary {
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.recharts-surface:focus {
+  outline: none;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+}
+
+td.best {
+  font-weight: 700;
+}
+
+tbody th {
+  font-size: inherit;
+  color: var(--text);
+  font-weight: 500;
 }

@@ -21,3 +21,14 @@ export function normalizeText(text: string) {
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
 }
+
+/** 150 -> « 2 min 30 s » ; 3743 -> « 1 h 02 min 23 s » */
+export function formatDuration(totalSeconds: number) {
+  const h = Math.floor(totalSeconds / 3600)
+  const m = Math.floor((totalSeconds % 3600) / 60)
+  const s = totalSeconds % 60
+  const pad = (n: number) => String(n).padStart(2, '0')
+  if (h) return `${h} h ${pad(m)} min ${pad(s)} s`
+  if (m) return `${m} min ${pad(s)} s`
+  return `${s} s`
+}
