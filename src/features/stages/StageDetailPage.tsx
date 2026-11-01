@@ -4,9 +4,11 @@ import { useRidersById, useTeamsById } from '@/api/riders'
 import { useStage } from '@/api/stages'
 import { JerseyIcon } from '@/components/Icons'
 import { EmptyState, ErrorState } from '@/components/QueryState'
+import { Panel } from '@/components/Panel'
 import { Rank } from '@/components/Rank'
 import { formatDate, formatKm } from '@/lib/format'
 import { STAGE_TYPE_LABELS } from './labels'
+import { StageWeather } from './StageWeather'
 
 export default function StageDetailPage() {
   const id = Number(useParams().id)
@@ -69,6 +71,10 @@ export default function StageDetailPage() {
           </div>
         )}
       </dl>
+
+      <Panel title="Météo à l'arrivée">
+        <StageWeather stage={s} />
+      </Panel>
 
       <h2>Arrivée</h2>
       {s.topFinishers.length === 0 ? (

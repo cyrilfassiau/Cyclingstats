@@ -28,6 +28,7 @@
   --row-hover: #faf8f0;
   --skeleton: #e9e7df;
   --danger: #b42318;
+  --success: #1e7a34;
 
   --type-flat: #2f9e44;
   --type-hilly: #e8590c;
@@ -50,6 +51,7 @@
   --chart-deemph: #d3d1c8;
   --chart-grid: #e6e4dc;
   --chart-axis: #c3c2b7;
+  --route: #d6336c;
 
   color-scheme: light;
   font-family: var(--font-body);
@@ -78,6 +80,7 @@
     --row-hover: #20201d;
     --skeleton: #2a2a27;
     --danger: #ff8a7a;
+    --success: #69db7c;
     --jersey-stroke: #0b0b0b;
     --series-1: #3987e5;
     --series-2: #d95926;
@@ -110,6 +113,7 @@
   --row-hover: #20201d;
   --skeleton: #2a2a27;
   --danger: #ff8a7a;
+  --success: #69db7c;
   --jersey-stroke: #0b0b0b;
   --series-1: #3987e5;
   --series-2: #d95926;
@@ -920,6 +924,174 @@ td.best {
   background: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
+/* ---------- Panneaux génériques ---------- */
+
+.panel {
+  margin: 1.25rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+
+.panel-body {
+  padding: 0.75rem;
+}
+
+.panel-body > .table-wrap {
+  border: none;
+  margin: -0.75rem -0.75rem 0;
+}
+
+.panel-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Mes sorties ---------- */
+
+.import-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 6rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 2px dashed var(--border-strong);
+  cursor: pointer;
+  transition: border-color 120ms ease-out, background 120ms ease-out;
+}
+
+.dropzone:hover,
+.dropzone.dragging,
+.dropzone:focus-within {
+  border-color: var(--underline);
+  background: var(--row-hover);
+}
+
+.dropzone-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Le vrai champ fichier couvre toute la zone : clic, clavier et lecteurs d'écran fonctionnent. */
+.dropzone input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.import-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  max-width: 16rem;
+}
+
+.import-side .meta {
+  margin: 0;
+}
+
+.import-messages {
+  list-style: none;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0;
+  font-size: 0.8125rem;
+}
+
+.import-messages li {
+  padding: 0.15rem 0;
+}
+
+.msg-ok {
+  color: var(--success);
+}
+
+.msg-error {
+  color: var(--danger);
+}
+
+.ride-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.ride-grid .panel {
+  margin: 0;
+}
+
+.map,
+.map .leaflet-container {
+  height: 22rem;
+  width: 100%;
+  font-family: var(--font-body);
+}
+
+.map {
+  margin: -0.75rem;
+  width: calc(100% + 1.5rem);
+}
+
+.chart-stack {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.weather-facts {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+}
+
+.weather-facts dt {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.weather-facts dd {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.wind-dir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.wind-dir svg {
+  color: var(--text);
+}
+
+.credit {
+  margin: 0.5rem 0 0;
+}
+
 /* ---------- Pagination et états ---------- */
 
 .pagination {
@@ -1012,6 +1184,18 @@ td.best {
   outline-color: var(--accent);
 }
 
+/* ---------- Carte en mode sombre ---------- */
+
+:root[data-theme='dark'] .leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .leaflet-tile {
+    filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+  }
+}
+
 /* ---------- Petits écrans ---------- */
 
 @media (max-width: 40rem) {
@@ -1050,6 +1234,20 @@ td.best {
 
   .highlights dd {
     font-size: 1.75rem;
+  }
+
+  .import-row,
+  .ride-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .import-side {
+    max-width: none;
+  }
+
+  .map,
+  .map .leaflet-container {
+    height: 16rem;
   }
 }
 

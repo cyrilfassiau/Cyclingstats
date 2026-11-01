@@ -65,3 +65,14 @@ Le script valide l'intégrité des relations (ids de coureurs et d'équipes exis
 - OA Sport et CyclingUpToDate (recoupement des classements finaux)
 
 Respecte les conditions d'utilisation de ces sites et cite-les dans ton projet.
+
+## Sorties GPX d'exemple
+
+`make_sample_gpx.py` génère 3 fichiers dans `public/samples/` pour la démo de « Mes sorties »
+(bouton « Charger 3 sorties d'exemple »). Ce sont des **traces générées**, pas des sorties
+enregistrées : des points de passage réels autour du lac d'Annecy reliés en ligne droite, avec une
+altitude et une vitesse simulées. Le script est déterministe (graine fixe).
+
+```bash
+python3 data-prep/make_sample_gpx.py   # réécrit public/samples/*.gpx
+```
