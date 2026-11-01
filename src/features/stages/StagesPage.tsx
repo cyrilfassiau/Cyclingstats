@@ -11,6 +11,7 @@ import { formatDate, formatKm } from '@/lib/format'
 import { oneOf } from '@/lib/params'
 import { parseStageFilters, serializeStageFilters, STAGE_SORTS } from './filters'
 import { STAGE_TYPE_LABELS, STAGE_TYPES } from './labels'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const SORT_LABELS = { number: 'Numéro', distanceKm: 'Distance' } as const
 
@@ -20,6 +21,7 @@ export default function StagesPage() {
   const riders = useRidersById()
   const teams = useTeamsById()
   const meta = useQuery(metaQuery)
+  useDocumentTitle('Étapes')
 
   return (
     <section aria-labelledby="stages-title">
@@ -31,7 +33,10 @@ export default function StagesPage() {
             { value: meta.data.totalDistanceKm.toLocaleString('fr-FR'), label: 'Kilomètres' },
             { value: meta.data.startersCount, label: 'Partants' },
             { value: meta.data.finishersCount, label: 'Arrivants à Paris' },
-            { value: `${meta.data.averageSpeedKmh.toLocaleString('fr-FR', { maximumFractionDigits: 1 })}`, label: 'km/h de moyenne' },
+            {
+              value: `${meta.data.averageSpeedKmh.toLocaleString('fr-FR', { maximumFractionDigits: 1 })}`,
+              label: 'km/h de moyenne',
+            },
           ]}
         />
       )}

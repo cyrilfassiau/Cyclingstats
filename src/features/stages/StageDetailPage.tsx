@@ -9,12 +9,18 @@ import { Rank } from '@/components/Rank'
 import { formatDate, formatKm } from '@/lib/format'
 import { STAGE_TYPE_LABELS } from './labels'
 import { StageWeather } from './StageWeather'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export default function StageDetailPage() {
   const id = Number(useParams().id)
   const stage = useStage(id)
   const riders = useRidersById()
   const teams = useTeamsById()
+  useDocumentTitle(
+    stage.data
+      ? `Étape ${stage.data.number} : ${stage.data.start} → ${stage.data.finish}`
+      : 'Étape',
+  )
 
   if (stage.isPending) return <p aria-busy="true">Chargement de l'étape…</p>
   if (stage.isError) {

@@ -8,6 +8,7 @@ import { useDebouncedUrlSearch } from '@/hooks/useDebouncedUrlSearch'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { parseRiderFilters, serializeRiderFilters } from './filters'
 import { CompareButton, FavoriteButton } from './RiderActions'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export default function RidersPage() {
   const [filters, setFilters] = useUrlFilters(parseRiderFilters, serializeRiderFilters)
@@ -18,6 +19,7 @@ export default function RidersPage() {
   const page = useRidersPage(filters)
   const teams = useTeamsById()
   const allRiders = useRidersById()
+  useDocumentTitle('Coureurs')
 
   const teamOptions = useMemo(
     () => [...(teams.data?.values() ?? [])].sort((a, b) => a.name.localeCompare(b.name, 'fr')),
@@ -114,7 +116,8 @@ export default function RidersPage() {
                         <Rank value={rider.finalRank} />
                       ) : (
                         <span className="meta">
-                          Abandon{rider.abandonedOnStage ? ` (ét. ${rider.abandonedOnStage})` : ''}
+                          Abandon
+                          {rider.abandonedOnStage ? ` (ét. ${rider.abandonedOnStage})` : ''}
                         </span>
                       )}
                     </td>

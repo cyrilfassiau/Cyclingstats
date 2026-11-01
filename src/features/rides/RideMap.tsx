@@ -1,11 +1,5 @@
 import 'leaflet/dist/leaflet.css'
-import {
-  CircleMarker,
-  MapContainer,
-  Polyline,
-  TileLayer,
-  Tooltip,
-} from 'react-leaflet'
+import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip } from 'react-leaflet'
 import type { TrackSample } from './rideStats'
 
 interface RideMapProps {
@@ -27,30 +21,18 @@ export function RideMap({ track, hoverIndex }: RideMapProps) {
   const hover = hoverIndex === null ? undefined : track[hoverIndex]
 
   return (
-    <div className="map" role="img" aria-label="Carte du parcours de la sortie">
-      <MapContainer
-        bounds={bounds}
-        boundsOptions={{ padding: [16, 16] }}
-        scrollWheelZoom={false}
-      >
+    <div className="map" role="region" aria-label="Carte du parcours de la sortie">
+      <MapContainer bounds={bounds} boundsOptions={{ padding: [16, 16] }} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Polyline
-          positions={positions}
-          pathOptions={{ color: 'var(--route)', weight: 4 }}
-        />
+        <Polyline positions={positions} pathOptions={{ color: 'var(--route)', weight: 4 }} />
         {start && (
           <CircleMarker
             center={[start.lat, start.lon]}
             radius={6}
-            pathOptions={{
-              color: '#141414',
-              fillColor: '#2f9e44',
-              fillOpacity: 1,
-              weight: 2,
-            }}
+            pathOptions={{ color: '#141414', fillColor: '#2f9e44', fillOpacity: 1, weight: 2 }}
           >
             <Tooltip>Départ</Tooltip>
           </CircleMarker>
@@ -59,12 +41,7 @@ export function RideMap({ track, hoverIndex }: RideMapProps) {
           <CircleMarker
             center={[end.lat, end.lon]}
             radius={6}
-            pathOptions={{
-              color: '#141414',
-              fillColor: '#ffffff',
-              fillOpacity: 1,
-              weight: 2,
-            }}
+            pathOptions={{ color: '#141414', fillColor: '#ffffff', fillOpacity: 1, weight: 2 }}
           >
             <Tooltip>Arrivée</Tooltip>
           </CircleMarker>
@@ -73,12 +50,7 @@ export function RideMap({ track, hoverIndex }: RideMapProps) {
           <CircleMarker
             center={[hover.lat, hover.lon]}
             radius={7}
-            pathOptions={{
-              color: '#141414',
-              fillColor: '#ffc400',
-              fillOpacity: 1,
-              weight: 2,
-            }}
+            pathOptions={{ color: '#141414', fillColor: '#ffc400', fillOpacity: 1, weight: 2 }}
           />
         )}
       </MapContainer>

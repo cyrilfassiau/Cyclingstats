@@ -35,10 +35,12 @@ export function CompareButton({ riderId, riderName }: RiderActionsProps) {
       aria-pressed={isCompared}
       disabled={!isCompared && isFull}
       title={!isCompared && isFull ? `Comparateur plein (${MAX_COMPARED} coureurs)` : undefined}
-      aria-label={`${isCompared ? 'Retirer' : 'Ajouter'} ${riderName} ${isCompared ? 'du' : 'au'} comparateur`}
+      // Le nom accessible commence par le texte visible (commande vocale : « clique sur
+      // Comparer ») ; l'état coché est porté par aria-pressed.
+      aria-label={`Comparer ${riderName}`}
       onClick={() => toggleCompared(riderId)}
     >
-      {isCompared ? 'Comparé' : 'Comparer'}
+      Comparer
     </button>
   )
 }

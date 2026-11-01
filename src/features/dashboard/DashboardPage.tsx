@@ -19,6 +19,7 @@ import { CompareButton, FavoriteButton } from '@/features/riders/RiderActions'
 import { compareByGc, type RiderStats } from '@/features/riders/stats'
 import { useRiderStats } from '@/features/riders/useRiderStats'
 import { RiderBarChart, type RiderBarDatum } from './RiderBarChart'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const GAP_TOP = 15
 
@@ -53,6 +54,7 @@ export default function DashboardPage() {
   const sorted = useMemo(() => [...(stats.data?.values() ?? [])].sort(compareByGc), [stats.data])
   const selectedId = params.get('rider') ?? sorted[0]?.rider.id
   const selected = selectedId ? stats.data?.get(selectedId) : undefined
+  useDocumentTitle(selected ? `Analyse · ${selected.rider.name}` : 'Analyse')
 
   const select = (riderId: string) =>
     setParams((prev) => {
@@ -125,15 +127,28 @@ export default function DashboardPage() {
       <Highlights
         label={`Chiffres clés de ${selected.rider.name}`}
         items={[
-          { value: selected.gcRank ? ordinal(selected.gcRank) : 'Ab.', label: 'Classement général' },
           {
-            value: selected.gapSeconds ? `+${formatGap(selected.gapSeconds)}` : selected.gcRank ? 'Vainqueur' : '–',
+            value: selected.gcRank ? ordinal(selected.gcRank) : 'Ab.',
+            label: 'Classement général',
+          },
+          {
+            value: selected.gapSeconds
+              ? `+${formatGap(selected.gapSeconds)}`
+              : selected.gcRank
+                ? 'Vainqueur'
+                : '–',
             label: 'Écart au vainqueur',
           },
           { value: selected.stageWins, label: "Victoires d'étape" },
           { value: selected.yellowDays, label: 'Jours en jaune' },
-          { value: selected.pointsRank ? ordinal(selected.pointsRank) : '–', label: 'Maillot vert' },
-          { value: selected.mountainsRank ? ordinal(selected.mountainsRank) : '–', label: 'Maillot à pois' },
+          {
+            value: selected.pointsRank ? ordinal(selected.pointsRank) : '–',
+            label: 'Maillot vert',
+          },
+          {
+            value: selected.mountainsRank ? ordinal(selected.mountainsRank) : '–',
+            label: 'Maillot à pois',
+          },
         ]}
       />
 
@@ -157,7 +172,10 @@ export default function DashboardPage() {
 
         <ChartCard
           title="Victoires d'étape"
-          table={{ columns: ['Coureur', 'Victoires'], rows: charts.wins.map((d) => [d.name, d.value]) }}
+          table={{
+            columns: ['Coureur', 'Victoires'],
+            rows: charts.wins.map((d) => [d.name, d.value]),
+          }}
         >
           <RiderBarChart
             data={charts.wins}
@@ -172,7 +190,10 @@ export default function DashboardPage() {
         <ChartCard
           title="Jours en maillot jaune"
           description="Porteur du maillot à l'issue de chaque étape."
-          table={{ columns: ['Coureur', 'Jours'], rows: charts.yellow.map((d) => [d.name, d.value]) }}
+          table={{
+            columns: ['Coureur', 'Jours'],
+            rows: charts.yellow.map((d) => [d.name, d.value]),
+          }}
         >
           <RiderBarChart
             data={charts.yellow}
@@ -187,7 +208,10 @@ export default function DashboardPage() {
         <ChartCard
           title="Maillot vert, top 10"
           description="Points au classement final."
-          table={{ columns: ['Coureur', 'Points'], rows: charts.points.map((d) => [d.name, d.value]) }}
+          table={{
+            columns: ['Coureur', 'Points'],
+            rows: charts.points.map((d) => [d.name, d.value]),
+          }}
         >
           <RiderBarChart
             data={charts.points}
@@ -213,7 +237,11 @@ export default function DashboardPage() {
             <ResponsiveContainer width="100%" height={220}>
               <LineChart data={leadData} margin={{ top: 8, right: 16, bottom: 4, left: 4 }}>
                 <CartesianGrid vertical={false} stroke="var(--chart-grid)" />
-                <XAxis dataKey="stage" stroke="var(--chart-axis)" tick={{ fill: 'var(--muted)', fontSize: 12 }} />
+                <XAxis
+                  dataKey="stage"
+                  stroke="var(--chart-axis)"
+                  tick={{ fill: 'var(--muted)', fontSize: 12 }}
+                />
                 <YAxis
                   tickFormatter={formatMinutes}
                   width={64}

@@ -1,6 +1,15 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 import { ChartCard } from '@/components/ChartCard'
 import { CloseIcon } from '@/components/Icons'
 import { EmptyState, ErrorState } from '@/components/QueryState'
@@ -8,6 +17,7 @@ import { formatDuration } from '@/lib/format'
 import { compareByGc, type RiderStats } from '@/features/riders/stats'
 import { useRiderStats } from '@/features/riders/useRiderStats'
 import { MAX_COMPARED, usePreferences } from '@/store/preferences'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 interface ComparedStats {
   stats: RiderStats
@@ -24,7 +34,12 @@ interface Metric {
 }
 
 const METRICS: Metric[] = [
-  { label: 'Classement général', value: (s) => s.gcRank, format: (v) => `${v}e`, lowerIsBetter: true },
+  {
+    label: 'Classement général',
+    value: (s) => s.gcRank,
+    format: (v) => (v === 1 ? '1er' : `${v}e`),
+    lowerIsBetter: true,
+  },
   {
     label: 'Écart au vainqueur',
     value: (s) => s.gapSeconds,
@@ -70,6 +85,7 @@ export default function ComparePage() {
   const compared = usePreferences((s) => s.compared)
   const toggleCompared = usePreferences((s) => s.toggleCompared)
   const clearCompared = usePreferences((s) => s.clearCompared)
+  useDocumentTitle('Comparateur')
 
   const riders = useMemo(
     () =>
@@ -139,8 +155,7 @@ export default function ComparePage() {
 
       {riders.length < 2 ? (
         <EmptyState>
-          Ajoutez au moins deux coureurs, ici ou depuis la page{' '}
-          <Link to="/riders">Coureurs</Link>.
+          Ajoutez au moins deux coureurs, ici ou depuis la page <Link to="/riders">Coureurs</Link>.
         </EmptyState>
       ) : (
         <>
@@ -195,7 +210,10 @@ export default function ComparePage() {
                 <ChartCard
                   key={title}
                   title={title}
-                  table={{ columns: ['Coureur', title], rows: data.map((d) => [d.name, unit(d.value)]) }}
+                  table={{
+                    columns: ['Coureur', title],
+                    rows: data.map((d) => [d.name, unit(d.value)]),
+                  }}
                 >
                   <ResponsiveContainer width="100%" height={220}>
                     <BarChart data={data} margin={{ top: 8, right: 8, bottom: 4, left: 4 }}>

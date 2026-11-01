@@ -24,7 +24,8 @@ const queryClient = new QueryClient({
 
 async function enableMocking() {
   const { worker } = await import('./mocks/browser')
-  await worker.start()
+  // Laisse passer sans avertissement ce que la fausse API ne gère pas (Open-Meteo, tuiles OSM…).
+  await worker.start({ onUnhandledFrame: 'bypass' })
 }
 
 enableMocking().then(() => {

@@ -7,10 +7,12 @@ import { CompareButton, FavoriteButton } from '@/features/riders/RiderActions'
 import { compareByGc } from '@/features/riders/stats'
 import { useRiderStats } from '@/features/riders/useRiderStats'
 import { usePreferences } from '@/store/preferences'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 export default function FavoritesPage() {
   const favorites = usePreferences((s) => s.favorites)
   const stats = useRiderStats()
+  useDocumentTitle('Favoris')
 
   if (favorites.length === 0) {
     return (
@@ -57,12 +59,18 @@ export default function FavoritesPage() {
             {rows.map((s) => (
               <tr key={s.rider.id}>
                 <td>
-                  <RiderName name={s.rider.name} team={s.teamName} to={`/dashboard?rider=${s.rider.id}`} />
+                  <RiderName
+                    name={s.rider.name}
+                    team={s.teamName}
+                    to={`/dashboard?rider=${s.rider.id}`}
+                  />
                 </td>
                 <td className="num">
                   {s.gcRank ? (
                     <span className="rank-cell">
-                      {s.gapSeconds ? <span className="meta">+ {formatDuration(s.gapSeconds)}</span> : null}
+                      {s.gapSeconds ? (
+                        <span className="meta">+ {formatDuration(s.gapSeconds)}</span>
+                      ) : null}
                       <Rank value={s.gcRank} />
                     </span>
                   ) : (

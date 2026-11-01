@@ -9,6 +9,7 @@ import { useDebouncedUrlSearch } from '@/hooks/useDebouncedUrlSearch'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { oneOf } from '@/lib/params'
 import { filterGcRows, GC_SORTS, parseGcFilters, serializeGcFilters, type GcRow } from './filters'
+import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const PAGE_SIZE = 20
 
@@ -18,6 +19,7 @@ export default function GcPage() {
   const gc = useGc()
   const riders = useRidersById()
   const teams = useTeamsById()
+  useDocumentTitle('Classement général')
 
   // La saisie est locale ; l'URL n'est mise à jour qu'après 300 ms sans frappe.
   const pushSearch = useCallback((q: string) => setFilters({ q, page: 1 }), [setFilters])
@@ -161,7 +163,11 @@ export default function GcPage() {
                       <Rank value={row.rank} />
                     </td>
                     <td>
-                      <RiderName name={row.name} team={row.teamName} to={`/dashboard?rider=${row.riderId}`} />
+                      <RiderName
+                        name={row.name}
+                        team={row.teamName}
+                        to={`/dashboard?rider=${row.riderId}`}
+                      />
                     </td>
                     <td className="meta">{row.nationality}</td>
                     <td className="num">{row.gap ? `+ ${row.gap}` : row.time}</td>
