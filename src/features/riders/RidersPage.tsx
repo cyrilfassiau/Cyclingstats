@@ -1,8 +1,9 @@
 import { useCallback, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { RIDERS_PAGE_SIZE, useRidersById, useRidersPage, useTeamsById } from '@/api/riders'
 import { Pagination } from '@/components/Pagination'
 import { EmptyState, ErrorState, TableSkeleton } from '@/components/QueryState'
+import { Rank } from '@/components/Rank'
+import { RiderName } from '@/components/RiderName'
 import { useDebouncedUrlSearch } from '@/hooks/useDebouncedUrlSearch'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { parseRiderFilters, serializeRiderFilters } from './filters'
@@ -84,12 +85,11 @@ export default function RidersPage() {
           </p>
           <div className="table-wrap" aria-busy={page.isFetching}>
             <table>
-              <caption className="visually-hidden">Coureurs du Tour de France 2026</caption>
+              <caption className="panel-title">Coureurs du Tour de France 2026</caption>
               <thead>
                 <tr>
                   <th scope="col">Coureur</th>
                   <th scope="col">Nat.</th>
-                  <th scope="col">Équipe</th>
                   <th scope="col" className="num">
                     Classement final
                   </th>
@@ -102,13 +102,21 @@ export default function RidersPage() {
                 {page.data.items.map((rider) => (
                   <tr key={rider.id}>
                     <td>
-                      <Link to={`/dashboard?rider=${rider.id}`}>{rider.name}</Link>
+                      <RiderName
+                        name={rider.name}
+                        team={teams.data?.get(rider.teamId)?.name ?? rider.teamId}
+                        to={`/dashboard?rider=${rider.id}`}
+                      />
                     </td>
-                    <td>{rider.nationality}</td>
-                    <td>{teams.data?.get(rider.teamId)?.name ?? rider.teamId}</td>
+                    <td className="meta">{rider.nationality}</td>
                     <td className="num">
-                      {rider.finalRank ??
-                        `Abandon${rider.abandonedOnStage ? ` (ét. ${rider.abandonedOnStage})` : ''}`}
+                      {rider.finalRank ? (
+                        <Rank value={rider.finalRank} />
+                      ) : (
+                        <span className="meta">
+                          Abandon{rider.abandonedOnStage ? ` (ét. ${rider.abandonedOnStage})` : ''}
+                        </span>
+                      )}
                     </td>
                     <td className="actions">
                       <FavoriteButton riderId={rider.id} riderName={rider.name} />

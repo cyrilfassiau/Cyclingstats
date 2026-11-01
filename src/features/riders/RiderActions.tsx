@@ -1,3 +1,4 @@
+import { StarIcon } from '@/components/Icons'
 import { MAX_COMPARED, usePreferences } from '@/store/preferences'
 
 interface RiderActionsProps {
@@ -18,7 +19,7 @@ export function FavoriteButton({ riderId, riderName }: RiderActionsProps) {
       title={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
       onClick={() => toggleFavorite(riderId)}
     >
-      <span aria-hidden="true">{isFavorite ? '★' : '☆'}</span>
+      <StarIcon filled={isFavorite} />
     </button>
   )
 }

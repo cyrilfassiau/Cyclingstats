@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { ChartCard } from '@/components/ChartCard'
+import { CloseIcon } from '@/components/Icons'
 import { EmptyState, ErrorState } from '@/components/QueryState'
 import { formatDuration } from '@/lib/format'
 import { compareByGc, type RiderStats } from '@/features/riders/stats'
@@ -129,7 +130,7 @@ export default function ComparePage() {
                 aria-label={`Retirer ${s.rider.name} du comparateur`}
                 onClick={() => toggleCompared(s.rider.id)}
               >
-                <span aria-hidden="true">×</span>
+                <CloseIcon />
               </button>
             </li>
           ))}
@@ -145,7 +146,7 @@ export default function ComparePage() {
         <>
           <div className="table-wrap">
             <table>
-              <caption className="visually-hidden">Comparaison des coureurs</caption>
+              <caption className="panel-title">Comparaison des coureurs</caption>
               <thead>
                 <tr>
                   <th scope="col">Statistique</th>

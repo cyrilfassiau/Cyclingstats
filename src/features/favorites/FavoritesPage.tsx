@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { EmptyState, ErrorState } from '@/components/QueryState'
+import { Rank } from '@/components/Rank'
+import { RiderName } from '@/components/RiderName'
 import { formatDuration } from '@/lib/format'
 import { CompareButton, FavoriteButton } from '@/features/riders/RiderActions'
 import { compareByGc } from '@/features/riders/stats'
@@ -15,7 +17,7 @@ export default function FavoritesPage() {
       <section aria-labelledby="favorites-title">
         <h1 id="favorites-title">Favoris</h1>
         <EmptyState>
-          Aucun favori pour l'instant. Ajoutez-en avec ☆ depuis la page{' '}
+          Aucun favori pour l'instant. Ajoutez-en avec l'étoile depuis la page{' '}
           <Link to="/riders">Coureurs</Link>.
         </EmptyState>
       </section>
@@ -36,11 +38,10 @@ export default function FavoritesPage() {
       <p className="note">Enregistrés dans ce navigateur.</p>
       <div className="table-wrap">
         <table>
-          <caption className="visually-hidden">Coureurs favoris</caption>
+          <caption className="panel-title">Coureurs favoris</caption>
           <thead>
             <tr>
               <th scope="col">Coureur</th>
-              <th scope="col">Équipe</th>
               <th scope="col" className="num">
                 Classement
               </th>
@@ -56,13 +57,17 @@ export default function FavoritesPage() {
             {rows.map((s) => (
               <tr key={s.rider.id}>
                 <td>
-                  <Link to={`/dashboard?rider=${s.rider.id}`}>{s.rider.name}</Link>
+                  <RiderName name={s.rider.name} team={s.teamName} to={`/dashboard?rider=${s.rider.id}`} />
                 </td>
-                <td>{s.teamName}</td>
                 <td className="num">
-                  {s.gcRank
-                    ? `${s.gcRank}e${s.gapSeconds ? ` (+ ${formatDuration(s.gapSeconds)})` : ''}`
-                    : 'Abandon'}
+                  {s.gcRank ? (
+                    <span className="rank-cell">
+                      {s.gapSeconds ? <span className="meta">+ {formatDuration(s.gapSeconds)}</span> : null}
+                      <Rank value={s.gcRank} />
+                    </span>
+                  ) : (
+                    <span className="meta">Abandon</span>
+                  )}
                 </td>
                 <td className="num">{s.stageWins}</td>
                 <td className="actions">

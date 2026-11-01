@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query'
-import { apiGetList } from './client'
+import { apiGet, apiGetList } from './client'
 import type {
   GcEntry,
   GcLead,
@@ -7,6 +7,7 @@ import type {
   Rider,
   Stage,
   Team,
+  TourMeta,
   YouthEntry,
 } from './types'
 
@@ -27,3 +28,9 @@ export const mountainsQuery = staticList<PointsEntry>('mountains', { _sort: 'ran
 export const youthQuery = staticList<YouthEntry>('youth', { _sort: 'rank' })
 export const gcLeadQuery = staticList<GcLead>('gcLead', { _sort: 'afterStage' })
 export const allStagesQuery = staticList<Stage>('stages', { _sort: 'number' })
+
+export const metaQuery = queryOptions({
+  queryKey: ['meta'],
+  queryFn: ({ signal }) => apiGet<TourMeta>('/meta', undefined, signal),
+  staleTime: Infinity,
+})

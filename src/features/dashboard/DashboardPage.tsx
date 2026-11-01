@@ -12,6 +12,7 @@ import {
 } from 'recharts'
 import { gcLeadQuery } from '@/api/queries'
 import { ChartCard } from '@/components/ChartCard'
+import { Highlights } from '@/components/Highlights'
 import { EmptyState, ErrorState } from '@/components/QueryState'
 import { formatDuration } from '@/lib/format'
 import { CompareButton, FavoriteButton } from '@/features/riders/RiderActions'
@@ -34,6 +35,15 @@ function minutes(seconds: number) {
 
 const formatMinutes = (m: number) => `${Math.round(m * 10) / 10} min`
 const formatCount = (n: number) => String(n)
+const ordinal = (n: number) => (n === 1 ? '1er' : `${n}e`)
+
+/** Écart compact pour le bandeau : « 6:26 » ou « 1:02:23 ». */
+function formatGap(seconds: number) {
+  const h = Math.floor(seconds / 3600)
+  const m = Math.floor((seconds % 3600) / 60)
+  const sec = String(seconds % 60).padStart(2, '0')
+  return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`
+}
 
 export default function DashboardPage() {
   const [params, setParams] = useSearchParams()
@@ -85,9 +95,23 @@ export default function DashboardPage() {
         évidence.
       </p>
 
-      <div className="rider-card">
-        <label>
-          Coureur sélectionné
+      <div className="profile">
+        <div className="profile-head">
+          <div>
+            <h2 className="profile-name">{selected.rider.name}</h2>
+            <p className="meta">
+              {selected.teamName} · {selected.rider.nationality}
+              {selected.rider.status === 'abandoned' &&
+                ` · Abandon${selected.rider.abandonedOnStage ? `, étape ${selected.rider.abandonedOnStage}` : ''}`}
+            </p>
+          </div>
+          <div className="profile-actions">
+            <FavoriteButton riderId={selected.rider.id} riderName={selected.rider.name} />
+            <CompareButton riderId={selected.rider.id} riderName={selected.rider.name} />
+          </div>
+        </div>
+        <label className="profile-select">
+          Changer de coureur
           <select value={selected.rider.id} onChange={(e) => select(e.target.value)}>
             {sorted.map((s) => (
               <option key={s.rider.id} value={s.rider.id}>
@@ -97,47 +121,21 @@ export default function DashboardPage() {
             ))}
           </select>
         </label>
-        <div className="rider-card-head">
-          <h2>{selected.rider.name}</h2>
-          <FavoriteButton riderId={selected.rider.id} riderName={selected.rider.name} />
-          <CompareButton riderId={selected.rider.id} riderName={selected.rider.name} />
-        </div>
-        <p className="note">
-          {selected.teamName} · {selected.rider.nationality}
-        </p>
-        <dl className="facts">
-          <div>
-            <dt>Classement général</dt>
-            <dd>
-              {selected.gcRank
-                ? `${selected.gcRank}e${selected.gapSeconds ? ` à ${formatDuration(selected.gapSeconds)}` : ''}`
-                : `Abandon${selected.rider.abandonedOnStage ? `, étape ${selected.rider.abandonedOnStage}` : ''}`}
-            </dd>
-          </div>
-          <div>
-            <dt>Victoires d'étape</dt>
-            <dd>{selected.stageWins}</dd>
-          </div>
-          <div>
-            <dt>Jours en jaune</dt>
-            <dd>{selected.yellowDays}</dd>
-          </div>
-          <div>
-            <dt>Maillot vert</dt>
-            <dd>
-              {selected.pointsRank ? `${selected.pointsRank}e (${selected.points} pts)` : 'Hors top 10'}
-            </dd>
-          </div>
-          <div>
-            <dt>Maillot à pois</dt>
-            <dd>
-              {selected.mountainsRank
-                ? `${selected.mountainsRank}e (${selected.mountainPoints} pts)`
-                : 'Hors top 10'}
-            </dd>
-          </div>
-        </dl>
       </div>
+      <Highlights
+        label={`Chiffres clés de ${selected.rider.name}`}
+        items={[
+          { value: selected.gcRank ? ordinal(selected.gcRank) : 'Ab.', label: 'Classement général' },
+          {
+            value: selected.gapSeconds ? `+${formatGap(selected.gapSeconds)}` : selected.gcRank ? 'Vainqueur' : '–',
+            label: 'Écart au vainqueur',
+          },
+          { value: selected.stageWins, label: "Victoires d'étape" },
+          { value: selected.yellowDays, label: 'Jours en jaune' },
+          { value: selected.pointsRank ? ordinal(selected.pointsRank) : '–', label: 'Maillot vert' },
+          { value: selected.mountainsRank ? ordinal(selected.mountainsRank) : '–', label: 'Maillot à pois' },
+        ]}
+      />
 
       <div className="chart-grid">
         <ChartCard

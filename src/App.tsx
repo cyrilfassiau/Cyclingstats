@@ -1,4 +1,5 @@
-import { Navigate, NavLink, Route, Routes } from 'react-router-dom'
+import { Link, Navigate, NavLink, Route, Routes } from 'react-router-dom'
+import { EditionBanner, SiteFooter } from '@/components/SiteChrome'
 import { ThemeSelect } from '@/components/ThemeSelect'
 import ComparePage from '@/features/compare/ComparePage'
 import DashboardPage from '@/features/dashboard/DashboardPage'
@@ -21,21 +22,29 @@ export default function App() {
   return (
     <>
       <header className="app-header">
-        <p className="brand">Cyclingstats · Tour de France 2026</p>
-        <nav aria-label="Navigation principale">
-          <NavLink to="/stages">Étapes</NavLink>
-          <NavLink to="/gc">Classement</NavLink>
-          <NavLink to="/riders">Coureurs</NavLink>
-          <NavLink to="/dashboard">Analyse</NavLink>
-          <NavLink to="/compare">
-            Comparateur <Count value={comparedCount} />
-          </NavLink>
-          <NavLink to="/favorites">
-            Favoris <Count value={favoritesCount} />
-          </NavLink>
-        </nav>
-        <ThemeSelect />
+        <div className="header-inner">
+          <Link to="/" className="brand" aria-label="Cyclingstats, accueil">
+            <span className="brand-mark" aria-hidden="true">
+              CS
+            </span>
+            <span className="brand-word">Cyclingstats</span>
+          </Link>
+          <nav aria-label="Navigation principale">
+            <NavLink to="/stages">Étapes</NavLink>
+            <NavLink to="/gc">Classement</NavLink>
+            <NavLink to="/riders">Coureurs</NavLink>
+            <NavLink to="/dashboard">Analyse</NavLink>
+            <NavLink to="/compare">
+              Comparateur <Count value={comparedCount} />
+            </NavLink>
+            <NavLink to="/favorites">
+              Favoris <Count value={favoritesCount} />
+            </NavLink>
+          </nav>
+          <ThemeSelect />
+        </div>
       </header>
+      <EditionBanner />
       <main>
         <Routes>
           <Route path="/" element={<Navigate to="/stages" replace />} />
@@ -49,6 +58,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+      <SiteFooter />
     </>
   )
 }

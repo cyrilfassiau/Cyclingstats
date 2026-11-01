@@ -2,7 +2,9 @@ import { Link, useParams } from 'react-router-dom'
 import { ApiError } from '@/api/client'
 import { useRidersById, useTeamsById } from '@/api/riders'
 import { useStage } from '@/api/stages'
+import { JerseyIcon } from '@/components/Icons'
 import { EmptyState, ErrorState } from '@/components/QueryState'
+import { Rank } from '@/components/Rank'
 import { formatDate, formatKm } from '@/lib/format'
 import { STAGE_TYPE_LABELS } from './labels'
 
@@ -49,7 +51,10 @@ export default function StageDetailPage() {
         </div>
         <div>
           <dt>Maillot jaune à l'arrivée</dt>
-          <dd>{riderName(s.yellowJerseyRiderId)}</dd>
+          <dd className="with-icon">
+            <JerseyIcon kind="yellow" />
+            {riderName(s.yellowJerseyRiderId)}
+          </dd>
         </div>
         {s.winningTime && (
           <div>
@@ -72,6 +77,7 @@ export default function StageDetailPage() {
         <ol className="finishers">
           {s.topFinishers.map((f) => (
             <li key={f.position} value={f.position}>
+              <Rank value={f.position} />
               {riderName(f.riderId)}
             </li>
           ))}

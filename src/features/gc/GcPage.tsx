@@ -1,9 +1,10 @@
 import { useCallback, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useGc } from '@/api/gc'
 import { useRidersById, useTeamsById } from '@/api/riders'
 import { Pagination } from '@/components/Pagination'
 import { EmptyState, ErrorState, TableSkeleton } from '@/components/QueryState'
+import { Rank } from '@/components/Rank'
+import { RiderName } from '@/components/RiderName'
 import { useDebouncedUrlSearch } from '@/hooks/useDebouncedUrlSearch'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { oneOf } from '@/lib/params'
@@ -140,7 +141,7 @@ export default function GcPage() {
           </p>
           <div className="table-wrap">
             <table>
-              <caption className="visually-hidden">Classement général final</caption>
+              <caption className="panel-title">Classement général final</caption>
               <thead>
                 <tr>
                   <th scope="col" className="num">
@@ -148,7 +149,6 @@ export default function GcPage() {
                   </th>
                   <th scope="col">Coureur</th>
                   <th scope="col">Nat.</th>
-                  <th scope="col">Équipe</th>
                   <th scope="col" className="num">
                     Temps / écart
                   </th>
@@ -157,12 +157,13 @@ export default function GcPage() {
               <tbody>
                 {pageRows.map((row) => (
                   <tr key={row.riderId}>
-                    <td className="num">{row.rank}</td>
-                    <td>
-                      <Link to={`/dashboard?rider=${row.riderId}`}>{row.name}</Link>
+                    <td className="num">
+                      <Rank value={row.rank} />
                     </td>
-                    <td>{row.nationality}</td>
-                    <td>{row.teamName}</td>
+                    <td>
+                      <RiderName name={row.name} team={row.teamName} to={`/dashboard?rider=${row.riderId}`} />
+                    </td>
+                    <td className="meta">{row.nationality}</td>
                     <td className="num">{row.gap ? `+ ${row.gap}` : row.time}</td>
                   </tr>
                 ))}

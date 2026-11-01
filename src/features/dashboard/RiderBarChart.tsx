@@ -81,7 +81,7 @@ export function RiderBarChart({
           {data.map((d) => (
             <Cell
               key={d.riderId}
-              fill={d.riderId === selectedId ? 'var(--series-1)' : 'var(--chart-deemph)'}
+              fill={d.riderId === selectedId ? 'var(--chart-emph)' : 'var(--chart-deemph)'}
             />
           ))}
         </Bar>

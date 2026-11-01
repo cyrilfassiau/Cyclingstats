@@ -1,6 +1,10 @@
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
+import { metaQuery } from '@/api/queries'
 import { useRidersById, useTeamsById } from '@/api/riders'
 import { useStages } from '@/api/stages'
+import { Highlights } from '@/components/Highlights'
+import { JerseyIcon } from '@/components/Icons'
 import { EmptyState, ErrorState, TableSkeleton } from '@/components/QueryState'
 import { useUrlFilters } from '@/hooks/useUrlFilters'
 import { formatDate, formatKm } from '@/lib/format'
@@ -15,10 +19,22 @@ export default function StagesPage() {
   const stages = useStages(filters)
   const riders = useRidersById()
   const teams = useTeamsById()
+  const meta = useQuery(metaQuery)
 
   return (
     <section aria-labelledby="stages-title">
       <h1 id="stages-title">Étapes</h1>
+      {meta.data && (
+        <Highlights
+          label="Chiffres clés de l'édition"
+          items={[
+            { value: meta.data.totalDistanceKm.toLocaleString('fr-FR'), label: 'Kilomètres' },
+            { value: meta.data.startersCount, label: 'Partants' },
+            { value: meta.data.finishersCount, label: 'Arrivants à Paris' },
+            { value: `${meta.data.averageSpeedKmh.toLocaleString('fr-FR', { maximumFractionDigits: 1 })}`, label: 'km/h de moyenne' },
+          ]}
+        />
+      )}
 
       <form className="filters" onSubmit={(e) => e.preventDefault()}>
         <label>
@@ -69,8 +85,8 @@ export default function StagesPage() {
       ) : (
         <div className="table-wrap" aria-busy={stages.isFetching}>
           <table>
-            <caption className="visually-hidden">
-              {stages.data.total} étapes du Tour de France 2026
+            <caption className="panel-title">
+              {stages.data.total} étape{stages.data.total > 1 ? 's' : ''}
             </caption>
             <thead>
               <tr>
@@ -87,11 +103,11 @@ export default function StagesPage() {
             </thead>
             <tbody>
               {stages.data.items.map((stage) => (
-                <tr key={stage.id}>
-                  <td>{stage.number}</td>
-                  <td>{formatDate(stage.date)}</td>
+                <tr key={stage.id} className={`stage-row type-${stage.type}`}>
+                  <td className="num">{stage.number}</td>
+                  <td className="meta">{formatDate(stage.date)}</td>
                   <td>
-                    <Link to={`/stages/${stage.id}`}>
+                    <Link to={`/stages/${stage.id}`} className="strong-link">
                       {stage.start} → {stage.finish}
                     </Link>
                   </td>
@@ -108,7 +124,12 @@ export default function StagesPage() {
                         ? (teams.data?.get(stage.winnerTeamId)?.name ?? '…')
                         : '—'}
                   </td>
-                  <td>{riders.data?.get(stage.yellowJerseyRiderId)?.name ?? '…'}</td>
+                  <td>
+                    <span className="with-icon">
+                      <JerseyIcon kind="yellow" />
+                      {riders.data?.get(stage.yellowJerseyRiderId)?.name ?? '…'}
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
