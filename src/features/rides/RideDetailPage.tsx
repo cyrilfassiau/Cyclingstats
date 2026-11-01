@@ -16,7 +16,7 @@ import { Highlights } from '@/components/Highlights'
 import { Panel } from '@/components/Panel'
 import { EmptyState } from '@/components/QueryState'
 import { formatDateTime, formatDecimal, formatHours } from '@/lib/format'
-import { useRides } from '@/store/rides'
+import { useRides, useRidesHydrated } from '@/store/rides'
 import { RideMap } from './RideMap'
 import { RideVsTour } from './RideVsTour'
 import { RideWeather } from './RideWeather'
@@ -34,9 +34,17 @@ const tooltipStyle = {
 export default function RideDetailPage() {
   const { id } = useParams()
   const ride = useRides((s) => s.rides.find((r) => r.id === id))
+  const hydrated = useRidesHydrated()
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   useDocumentTitle(ride?.name ?? 'Sortie introuvable')
 
+  if (!ride && !hydrated) {
+    return (
+      <p aria-busy="true" className="meta">
+        Chargement de la sortie…
+      </p>
+    )
+  }
   if (!ride) {
     return (
       <EmptyState>

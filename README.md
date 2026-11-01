@@ -18,9 +18,9 @@ Projet de portfolio qui montre trois compétences : **consommation d'API**, **ge
 - **Analyse** : cinq graphiques liés. Cliquer sur un coureur dans l'un d'eux le met en évidence
   dans tous les autres.
 - **Comparateur** : de 2 à 4 coureurs côte à côte, chacun avec une couleur fixe.
-- **Mes sorties** : import de fichiers GPX lus dans le navigateur, carte, profil d'altitude et
-  vitesse synchronisés, météo pendant la sortie, statistiques par mois, et « Ma sortie vs le
-  Tour ».
+- **Mes sorties** : import de fichiers GPX ou FIT, ou de l'archive complète exportée de Garmin
+  Connect, lus dans le navigateur. Carte, profil d'altitude et vitesse synchronisés, météo
+  pendant la sortie, statistiques par mois, et « Ma sortie vs le Tour ».
 - Thème clair, sombre ou système. Filtres dans l'URL : chaque vue se partage par lien.
 
 | Analyse à graphiques liés | Comparateur |
@@ -38,7 +38,8 @@ Projet de portfolio qui montre trois compétences : **consommation d'API**, **ge
 | Interface | React 19, TypeScript en mode strict, Vite |
 | Navigation | React Router |
 | État serveur | TanStack Query |
-| État de l'interface | Zustand (persisté dans `localStorage`) |
+| État de l'interface | Zustand (préférences dans `localStorage`, sorties dans IndexedDB) |
+| Fichiers d'activité | fit-file-parser (FIT), fflate (zip) |
 | Fausse API | MSW (Mock Service Worker) |
 | Graphiques | Recharts |
 | Carte | Leaflet et OpenStreetMap |
@@ -58,11 +59,18 @@ Projet de portfolio qui montre trois compétences : **consommation d'API**, **ge
   l'API.
 - **Requêtes dépendantes.** La météo d'une étape enchaîne deux appels Open-Meteo : on trouve
   d'abord les coordonnées de la ville d'arrivée, puis on charge la météo du jour de la course.
-- **Fichiers GPX lus dans le navigateur.** `DOMParser`, distances par la formule de haversine,
-  dénivelé lissé avec un seuil pour ignorer le bruit de l'altimètre, temps en mouvement. Aucun
-  fichier n'est envoyé sur un serveur.
+- **Fichiers d'activité lus dans le navigateur.** GPX avec `DOMParser`, FIT avec une bibliothèque
+  MIT. L'archive Garmin est fouillée jusque dans ses zip imbriqués ; les autres sports, le home
+  trainer et les doublons (même départ à une minute près, quel que soit le format) sont
+  écartés. Distances par la formule de haversine, dénivelé lissé avec un seuil pour ignorer le
+  bruit de l'altimètre, temps en mouvement. Aucun fichier n'est envoyé sur un serveur.
+- **Pas de synchronisation Garmin automatique.** Elle demanderait un serveur (connexion OAuth,
+  réception des nouvelles activités) et l'accès à l'API officielle, réservé aux développeurs
+  acceptés par Garmin. Le SDK FIT officiel n'est pas utilisé : sa licence interdit de le
+  redistribuer, ce que ferait une appli web publique.
 - **Chargement à la demande.** Seule la page Étapes est dans le bundle initial. Recharts, Leaflet
-  et le code GPX ne se chargent qu'avec les pages qui en ont besoin.
+  et le code GPX ne se chargent qu'avec les pages qui en ont besoin ; le lecteur FIT et la
+  décompression zip, seulement au premier import qui en a besoin.
 - **Vite plutôt que Next.js.** L'application n'a pas de serveur, un site statique suffit.
 
 ## Données et sources
@@ -96,10 +104,12 @@ npm run dev          # http://localhost:5173
 
 ## Tests
 
-44 tests dans 11 fichiers :
+52 tests dans 13 fichiers :
 
 - **Fonctions pures** : lecture des filtres depuis l'URL, filtrage du classement, calcul des
-  statistiques par coureur, lecture d'un GPX, dénivelé, regroupement par mois, synthèse météo.
+  statistiques par coureur, lecture d'un GPX et d'un FIT (fichiers FIT fabriqués par les tests),
+  archive Garmin avec zip imbriqués, doublons entre formats, dénivelé, regroupement par mois,
+  synthèse météo.
 - **Store** : favoris, plafond de 4 coureurs comparés, couleur conservée quand on en retire un.
 - **Composants**, avec la même fausse API servie dans Node par MSW : filtres écrits dans l'URL,
   erreur puis « Réessayer », recherche avec debounce, pagination par l'API, page 404,

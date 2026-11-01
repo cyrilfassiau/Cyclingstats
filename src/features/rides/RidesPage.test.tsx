@@ -19,7 +19,7 @@ describe('page Mes sorties', () => {
   it('importe un GPX valide et signale un fichier invalide', async () => {
     const user = userEvent.setup()
     renderPage(<RidesPage />, { url: '/rides' })
-    expect(screen.getByText("Aucune sortie pour l'instant.")).toBeInTheDocument()
+    expect(await screen.findByText("Aucune sortie pour l'instant.")).toBeInTheDocument()
 
     await user.upload(screen.getByLabelText(/Déposer des fichiers GPX/), [
       new File([GPX], 'matin.gpx', { type: 'application/gpx+xml' }),

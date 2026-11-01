@@ -1046,6 +1046,55 @@ td.best {
   color: var(--success);
 }
 
+.msg-skip {
+  color: var(--muted);
+}
+
+.import-messages p {
+  margin: 0 0 0.25rem;
+}
+
+.import-messages ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.import-summary {
+  font-weight: 700;
+}
+
+.help {
+  margin: 1rem 0 0;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.help summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.help ol {
+  margin: 0.6rem 0 0.4rem;
+  padding-left: 1.25rem;
+}
+
+.help li + li {
+  margin-top: 0.3rem;
+}
+
+.help .meta {
+  margin: 0;
+}
+
+.clear-rides {
+  margin: 0.75rem 0 0;
+  text-align: right;
+}
+
 .msg-error {
   color: var(--danger);
 }

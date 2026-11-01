@@ -4,10 +4,17 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 import { ChartCard } from '@/components/ChartCard'
 import { Highlights } from '@/components/Highlights'
 import { CloseIcon } from '@/components/Icons'
+import { Pagination } from '@/components/Pagination'
 import { EmptyState } from '@/components/QueryState'
 import { formatDecimal, formatHours } from '@/lib/format'
-import { useRides } from '@/store/rides'
-import { importGpx, sampleSources, type GpxSource, type ImportResult } from './importRides'
+import { useRides, useRidesHydrated } from '@/store/rides'
+import {
+  fileSource,
+  importActivities,
+  sampleSources,
+  type ActivitySource,
+  type ImportSummary,
+} from './importRides'
 import { groupByMonth } from './rideStats'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
@@ -18,6 +25,21 @@ const dayFormat = new Intl.DateTimeFormat('fr-FR', {
   year: 'numeric',
 })
 
+const PAGE_SIZE = 25
+
+function plural(count: number, singular: string, pluralForm = `${singular}s`) {
+  return `${count} ${count > 1 ? pluralForm : singular}`
+}
+
+/** Bilan d'un import, en une phrase. */
+function summarize(summary: ImportSummary) {
+  const parts = [plural(summary.added.length, 'sortie ajoutée', 'sorties ajoutées')]
+  if (summary.duplicates) parts.push(plural(summary.duplicates, 'déjà importée', 'déjà importées'))
+  if (summary.skipped) parts.push(plural(summary.skipped, 'activité ignorée', 'activités ignorées'))
+  if (summary.failed) parts.push(plural(summary.failed, 'fichier illisible', 'fichiers illisibles'))
+  return `${parts.join(', ')}.`
+}
+
 function monthLabel(month: string) {
   return monthFormat.format(new Date(`${month}-15T12:00:00`))
 }
@@ -26,9 +48,13 @@ export default function RidesPage() {
   const rides = useRides((s) => s.rides)
   const addRides = useRides((s) => s.addRides)
   const removeRide = useRides((s) => s.removeRide)
-  const [busy, setBusy] = useState(false)
+  const clearRides = useRides((s) => s.clearRides)
+  const hydrated = useRidesHydrated()
+  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null)
   const [dragging, setDragging] = useState(false)
-  const [messages, setMessages] = useState<ImportResult['messages']>([])
+  const [summary, setSummary] = useState<ImportSummary | null>(null)
+  const [page, setPage] = useState(1)
+  const busy = progress !== null
   useDocumentTitle('Mes sorties')
 
   const sorted = useMemo(
@@ -45,17 +71,27 @@ export default function RidesPage() {
     [rides],
   )
 
-  async function runImport(sources: GpxSource[]) {
+  const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE))
+  const currentPage = Math.min(page, pageCount)
+  const pageRides = sorted.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+
+  async function runImport(sources: ActivitySource[]) {
     if (sources.length === 0) return
-    setBusy(true)
-    const result = await importGpx(sources, useRides.getState().rides)
-    if (result.added.length) addRides(result.added)
-    setMessages(result.messages)
-    setBusy(false)
+    setSummary(null)
+    setProgress({ done: 0, total: 0 })
+    try {
+      const result = await importActivities(sources, useRides.getState().rides, (done, total) =>
+        setProgress({ done, total }),
+      )
+      if (result.added.length) addRides(result.added)
+      setSummary(result)
+      setPage(1)
+    } finally {
+      setProgress(null)
+    }
   }
 
-  const fromFiles = (files: FileList | null) =>
-    runImport([...(files ?? [])].map((file) => ({ fileName: file.name, read: () => file.text() })))
+  const fromFiles = (files: FileList | null) => runImport([...(files ?? [])].map(fileSource))
 
   const onDrop = (event: DragEvent<HTMLLabelElement>) => {
     event.preventDefault()
@@ -67,8 +103,8 @@ export default function RidesPage() {
     <section aria-labelledby="rides-title">
       <h1 id="rides-title">Mes sorties</h1>
       <p className="subtitle">
-        Importez vos fichiers GPX : ils sont lus dans votre navigateur, rien n'est envoyé sur un
-        serveur.
+        Importez vos fichiers GPX ou FIT, ou l'archive complète exportée de Garmin Connect : tout
+        est lu dans votre navigateur, rien n'est envoyé sur un serveur.
       </p>
 
       <div className="import-row">
@@ -81,11 +117,11 @@ export default function RidesPage() {
           onDragLeave={() => setDragging(false)}
           onDrop={onDrop}
         >
-          <span className="dropzone-title">Déposer des fichiers GPX ici</span>
+          <span className="dropzone-title">Déposer des fichiers GPX, FIT ou ZIP ici</span>
           <span className="meta">ou cliquer pour les choisir (plusieurs possibles)</span>
           <input
             type="file"
-            accept=".gpx,application/gpx+xml"
+            accept=".gpx,.fit,.zip,application/gpx+xml,application/zip"
             multiple
             disabled={busy}
             onChange={(e) => {
@@ -102,16 +138,56 @@ export default function RidesPage() {
         </div>
       </div>
 
-      <ul className="import-messages" aria-live="polite">
-        {busy && <li>Lecture des fichiers…</li>}
-        {messages.map((m) => (
-          <li key={m.text} className={m.kind === 'error' ? 'msg-error' : 'msg-ok'}>
-            {m.text}
+      <details className="help">
+        <summary>Récupérer toutes mes sorties Garmin</summary>
+        <ol>
+          <li>
+            <strong>Une sortie</strong> : dans Garmin Connect, ouvrez l'activité puis utilisez
+            l'export du fichier d'origine (FIT) ou de la trace GPX.
           </li>
-        ))}
-      </ul>
+          <li>
+            <strong>Tout l'historique</strong> : depuis votre compte Garmin, demandez l'export de
+            vos données personnelles. Garmin envoie par e-mail un lien vers une archive .zip.
+          </li>
+          <li>
+            Déposez l'archive telle quelle : les activités vélo sont retrouvées, même dans les zip
+            imbriqués. Les autres sports, le home trainer et les doublons sont ignorés.
+          </li>
+        </ol>
+        <p className="meta">
+          Une synchronisation automatique demanderait un serveur et l'accès à l'API officielle de
+          Garmin, réservé aux développeurs acceptés par Garmin.
+        </p>
+      </details>
 
-      {rides.length === 0 ? (
+      <div className="import-messages" aria-live="polite">
+        {busy && (
+          <p>
+            {progress.total
+              ? `Lecture des fichiers… ${progress.done} / ${progress.total}`
+              : 'Ouverture des fichiers…'}
+          </p>
+        )}
+        {summary && <p className="import-summary">{summarize(summary)}</p>}
+        {summary && summary.messages.length > 0 && (
+          <ul>
+            {summary.messages.slice(0, 12).map((m, i) => (
+              <li key={i} className={`msg-${m.kind}`}>
+                {m.text}
+              </li>
+            ))}
+            {summary.messages.length > 12 && (
+              <li className="meta">… et {summary.messages.length - 12} autres messages.</li>
+            )}
+          </ul>
+        )}
+      </div>
+
+      {!hydrated ? (
+        <p aria-busy="true" className="meta">
+          Chargement de vos sorties…
+        </p>
+      ) : rides.length === 0 ? (
         <EmptyState>Aucune sortie pour l'instant.</EmptyState>
       ) : (
         <>
@@ -127,9 +203,7 @@ export default function RidesPage() {
 
           <div className="table-wrap">
             <table>
-              <caption className="panel-title">
-                {rides.length} sortie{rides.length > 1 ? 's' : ''}
-              </caption>
+              <caption className="panel-title">{plural(rides.length, 'sortie')}</caption>
               <thead>
                 <tr>
                   <th scope="col">Date</th>
@@ -152,7 +226,7 @@ export default function RidesPage() {
                 </tr>
               </thead>
               <tbody>
-                {sorted.map((ride) => (
+                {pageRides.map((ride) => (
                   <tr key={ride.id}>
                     <td className="meta">
                       {ride.startTime ? dayFormat.format(ride.startTime) : 'Non datée'}
@@ -188,6 +262,19 @@ export default function RidesPage() {
               </tbody>
             </table>
           </div>
+          <Pagination page={currentPage} pageCount={pageCount} onChange={setPage} />
+          <p className="clear-rides">
+            <button
+              type="button"
+              onClick={() => {
+                if (window.confirm(`Supprimer les ${rides.length} sorties de ce navigateur ?`)) {
+                  clearRides()
+                }
+              }}
+            >
+              Tout supprimer
+            </button>
+          </p>
 
           {months.length > 0 && (
             <div className="chart-grid">

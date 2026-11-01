@@ -122,9 +122,10 @@ try {
     `[...document.querySelectorAll('button')].find((b) => b.textContent.includes("sorties d'exemple"))?.click()`,
   )
   await sleep(2000)
-  const rideId = await evaluate(
+  // Les sorties sont rangées dans IndexedDB : on lit l'adresse de la sortie dans le tableau.
+  const ridePath = await evaluate(
     send,
-    `JSON.parse(localStorage.getItem('cyclingstats-rides')).state.rides.find((r) => r.fileName === 'col-de-la-forclaz.gpx')?.id`,
+    `[...document.querySelectorAll('a[href^="/rides/"]')].find((a) => a.textContent.includes('Forclaz'))?.getAttribute('href')`,
   )
 
   await mkdir(OUT, { recursive: true })
@@ -140,7 +141,7 @@ try {
     await send('Emulation.setEmulatedMedia', {
       features: [{ name: 'prefers-color-scheme', value: shot.dark ? 'dark' : 'light' }],
     })
-    const path = shot.path === 'RIDE' ? `/rides/${rideId}` : shot.path
+    const path = shot.path === 'RIDE' ? ridePath : shot.path
     await send('Page.navigate', { url: `${BASE}${path}` })
     // Laisse le temps aux données (fausse API, Open-Meteo, tuiles de carte) d'arriver.
     await sleep(shot.path === 'RIDE' ? 6000 : 3500)
