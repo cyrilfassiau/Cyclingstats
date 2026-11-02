@@ -17,6 +17,9 @@ import {
 } from './importRides'
 import { groupByPeriod, type Period } from './rideStats'
 import { TourRecap } from './TourRecap'
+import { DemoBanner } from './DemoBanner'
+import { buildDemoFile } from './demo'
+import { useDemoRides } from './useDemoRides'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const monthFormat = new Intl.DateTimeFormat('fr-FR', { month: 'short', year: '2-digit' })
@@ -74,7 +77,9 @@ export default function RidesPage() {
       { replace: true },
     )
   const busy = progress !== null
+  const [exportNote, setExportNote] = useState<string | null>(null)
   useDocumentTitle('Mes sorties')
+  useDemoRides()
 
   const sorted = useMemo(
     () => [...rides].sort((a, b) => (b.startTime ?? 0) - (a.startTime ?? 0)),
@@ -100,7 +105,9 @@ export default function RidesPage() {
     setSummary(null)
     setProgress({ done: 0, total: 0 })
     try {
-      const result = await importActivities(sources, useRides.getState().rides, (done, total) =>
+      // Les sorties de démo ne comptent pas comme doublons : l'import va les remplacer.
+      const ownRides = useRides.getState().rides.filter((r) => !r.demo)
+      const result = await importActivities(sources, ownRides, (done, total) =>
         setProgress({ done, total }),
       )
       if (result.added.length) addRides(result.added)
@@ -112,6 +119,25 @@ export default function RidesPage() {
   }
 
   const fromFiles = (files: FileList | null) => runImport([...(files ?? [])].map(fileSource))
+
+  // Outil de l'auteur, visible seulement en développement (npm run dev) : télécharge le
+  // fichier de démo à publier dans public/demo/rides.json.
+  const ownRideCount = rides.filter((r) => !r.demo).length
+  function exportDemo() {
+    const { file, dropped } = buildDemoFile(rides.filter((r) => !r.demo))
+    const url = URL.createObjectURL(new Blob([JSON.stringify(file)], { type: 'application/json' }))
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'rides.json'
+    link.click()
+    URL.revokeObjectURL(url)
+    setExportNote(
+      `${plural(file.rides.length, 'sortie exportée', 'sorties exportées')}` +
+        (dropped ? `, ${plural(dropped, 'trop courte écartée', 'trop courtes écartées')}` : '') +
+        `. Placez rides.json dans public/demo/ puis redéployez.` +
+        (file.rides.length > 20 ? ' Conseil : 10 à 20 sorties suffisent pour la démo.' : ''),
+    )
+  }
 
   const onDrop = (event: DragEvent<HTMLLabelElement>) => {
     event.preventDefault()
@@ -126,6 +152,7 @@ export default function RidesPage() {
         Importez vos fichiers GPX ou FIT, ou l'archive complète exportée de Garmin Connect : tout
         est lu dans votre navigateur, rien n'est envoyé sur un serveur.
       </p>
+      <DemoBanner />
 
       <div className="import-row">
         <label
@@ -281,7 +308,17 @@ export default function RidesPage() {
             >
               Tout supprimer
             </button>
+            {import.meta.env.DEV && ownRideCount > 0 && (
+              <button type="button" onClick={exportDemo}>
+                Exporter la démo ({plural(ownRideCount, 'sortie')})
+              </button>
+            )}
           </p>
+          {exportNote && (
+            <p className="meta export-note" aria-live="polite">
+              {exportNote}
+            </p>
+          )}
 
           {periods.length > 0 && (
             <div className="chart-grid">

@@ -6,6 +6,9 @@ import RidesPage from './RidesPage'
 import { formatDecimal } from '@/lib/format'
 import { parseGpx } from './gpx'
 import { computeRide, type Ride } from './rideStats'
+import { http, HttpResponse } from 'msw'
+import { server } from '@/test/server'
+import { buildDemoFile } from './demo'
 
 const GPX = `<?xml version="1.0"?>
 <gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1">
@@ -16,7 +19,7 @@ const GPX = `<?xml version="1.0"?>
   </trkseg></trk>
 </gpx>`
 
-beforeEach(() => useRides.setState({ rides: [] }))
+beforeEach(() => useRides.setState({ rides: [], demoVersion: null, demoDismissed: false }))
 
 describe('page Mes sorties', () => {
   it('importe un GPX valide et signale un fichier invalide', async () => {
@@ -89,5 +92,51 @@ describe('page Mes sorties : graphique et récap', () => {
     const dataTable = screen.getAllByRole('table').find((t) => within(t).queryByText('Année'))!
     expect(within(dataTable).getByRole('row', { name: /^2025 9/ })).toBeInTheDocument()
     expect(within(dataTable).getByRole('row', { name: /^2026 20/ })).toBeInTheDocument()
+  })
+})
+
+describe('page Mes sorties : démo', () => {
+  // Trace d'environ 3 km en ligne droite : il en reste une fois le départ et l'arrivée masqués.
+  const longGpx = GPX.replace(
+    /<trkseg>[\s\S]*<\/trkseg>/,
+    `<trkseg>${Array.from(
+      { length: 30 },
+      (_, i) =>
+        `<trkpt lat="${(45 + i * 0.001).toFixed(3)}" lon="6.0"><ele>400</ele><time>2026-09-12T08:${String(i).padStart(2, '0')}:00Z</time></trkpt>`,
+    ).join('')}</trkseg>`,
+  )
+  const demoRide = computeRide(parseGpx(longGpx).points, {
+    id: 'demo-1',
+    name: 'Col de la démo',
+    fileName: 'demo.fit',
+  })
+
+  beforeEach(() => {
+    const { file } = buildDemoFile([demoRide], new Date('2026-11-02T10:00:00Z'))
+    server.use(http.get('/demo/rides.json', () => HttpResponse.json(file)))
+  })
+
+  it('montre la démo à un visiteur sans sorties, puis la remplace par ses imports', async () => {
+    const user = userEvent.setup()
+    renderPage(<RidesPage />, { url: '/rides' })
+
+    expect(await screen.findByRole('link', { name: 'Col de la démo' })).toBeInTheDocument()
+    expect(screen.getByRole('note')).toHaveTextContent("Démonstration : 1 sortie réelle de l'auteur")
+
+    await user.upload(screen.getByLabelText(/Déposer des fichiers/), new File([GPX], 'matin.gpx'))
+
+    expect(await screen.findByRole('link', { name: 'Boucle du matin' })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Col de la démo' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('note')).not.toBeInTheDocument()
+    expect(useRides.getState().demoDismissed).toBe(true)
+  })
+
+  it('ne recharge pas la démo une fois retirée', async () => {
+    const user = userEvent.setup()
+    renderPage(<RidesPage />, { url: '/rides' })
+    await user.click(await screen.findByRole('button', { name: 'Retirer la démo' }))
+
+    expect(await screen.findByText("Aucune sortie pour l'instant.")).toBeInTheDocument()
+    expect(useRides.getState().demoDismissed).toBe(true)
   })
 })

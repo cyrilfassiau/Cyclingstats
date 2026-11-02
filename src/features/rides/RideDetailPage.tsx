@@ -17,6 +17,7 @@ import { Panel } from '@/components/Panel'
 import { EmptyState } from '@/components/QueryState'
 import { formatDateTime, formatDecimal, formatHours } from '@/lib/format'
 import { useRides, useRidesHydrated } from '@/store/rides'
+import { useDemoRides } from './useDemoRides'
 import { RideMap } from './RideMap'
 import { RideVsTour } from './RideVsTour'
 import { RideWeather } from './RideWeather'
@@ -35,6 +36,8 @@ export default function RideDetailPage() {
   const { id } = useParams()
   const ride = useRides((s) => s.rides.find((r) => r.id === id))
   const hydrated = useRidesHydrated()
+  // Lien direct vers une sortie de démo : elle doit être chargée même sans passer par la liste.
+  useDemoRides()
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   useDocumentTitle(ride?.name ?? 'Sortie introuvable')
 
@@ -76,6 +79,7 @@ export default function RideDetailPage() {
       <h1 id="ride-title">{ride.name}</h1>
       <p className="subtitle">
         {ride.startTime ? formatDateTime(ride.startTime) : 'Sortie non datée'} · {ride.fileName}
+        {ride.demo && ' · sortie de démonstration, départ et arrivée masqués'}
       </p>
 
       <Highlights

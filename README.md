@@ -82,8 +82,11 @@ Projet de portfolio qui montre trois compétences : **consommation d'API**, **ge
   pas de classement après chaque étape, podiums d'étape partiels (voir `data-prep/README.md`).
 - **Météo** : [Open-Meteo](https://open-meteo.com/) (API réelle, sans clé, licence CC BY 4.0).
 - **Carte** : © [contributeurs OpenStreetMap](https://www.openstreetmap.org/copyright).
-- **Sorties d'exemple** : trois traces **générées** autour du lac d'Annecy
-  (`data-prep/make_sample_gpx.py`), pas de vraies sorties enregistrées.
+- **Sorties de démonstration** : un échantillon de mes vraies sorties, publié avec le site
+  (`public/demo/rides.json`) pour que la page Mes sorties ne soit pas vide. Le départ et
+  l'arrivée de chaque trace sont masqués sur 500 m. Voir « Mettre à jour la démo ».
+- **Sorties d'exemple générées** : trois traces **générées** autour du lac d'Annecy
+  (`data-prep/make_sample_gpx.py`), utilisées par les tests, pas de vraies sorties.
 - Pas d'API Strava : son accès développeur est devenu payant.
 
 ## Lancer le projet
@@ -102,18 +105,35 @@ npm run dev          # http://localhost:5173
 | `python3 data-prep/build_db.py` | régénère le jeu de données du Tour |
 | `node scripts/screenshots.mjs` | refait les captures du README (appli lancée, Chrome installé) |
 
+## Mettre à jour la démo
+
+Les sorties importées restent dans le navigateur de chaque visiteur. Pour que la démo en ligne
+montre des données, un échantillon est publié avec le site :
+
+1. Lancer l'appli en local (`npm run dev`) et, sur Mes sorties, ne garder que les 10 à 20
+   sorties à montrer (« Tout supprimer » puis importer celles choisies).
+2. Cliquer sur **Exporter la démo**. Ce bouton n'existe qu'en développement. Le fichier
+   `rides.json` téléchargé contient les sorties avec le départ et l'arrivée masqués sur 500 m.
+3. Le placer dans `public/demo/rides.json`, commiter, redéployer.
+
+Un visiteur sans sorties reçoit la démo, signalée par un bandeau. Dès qu'il importe ses propres
+fichiers, ils remplacent la démo chez lui. Un nouvel export remplace l'ancienne démo chez les
+visiteurs qui l'avaient encore.
+
 ## Tests
 
-52 tests dans 13 fichiers :
+69 tests dans 16 fichiers :
 
 - **Fonctions pures** : lecture des filtres depuis l'URL, filtrage du classement, calcul des
   statistiques par coureur, lecture d'un GPX et d'un FIT (fichiers FIT fabriqués par les tests),
-  archive Garmin avec zip imbriqués, doublons entre formats, dénivelé, regroupement par mois,
-  synthèse météo.
-- **Store** : favoris, plafond de 4 coureurs comparés, couleur conservée quand on en retire un.
+  archive Garmin avec zip imbriqués, doublons entre formats, dénivelé, regroupement par mois ou
+  par an, récap face au Tour, masquage du départ et de l'arrivée, synthèse météo.
+- **Stores** : favoris, plafond de 4 coureurs comparés, couleur conservée quand on en retire un ;
+  démo remplacée au premier import et qui ne revient pas une fois retirée.
 - **Composants**, avec la même fausse API servie dans Node par MSW : filtres écrits dans l'URL,
   erreur puis « Réessayer », recherche avec debounce, pagination par l'API, page 404,
-  enchaînement géocodage puis météo, import GPX et rejet des doublons.
+  enchaînement géocodage puis météo, import GPX et rejet des doublons, démo puis remplacement
+  par les imports du visiteur, récap qui compte toutes les sorties, bascule mois / an.
 - **Accessibilité** : axe-core sur les pages Étapes et Classement.
 
 ## Accessibilité

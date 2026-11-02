@@ -24,6 +24,8 @@ export interface Ride {
   avgSpeedKmh: number | null
   maxSpeedKmh: number | null
   track: TrackSample[]
+  /** Sortie de démonstration publiée avec le site (remplacée dès le premier import). */
+  demo?: boolean
 }
 
 /** En dessous de cette vitesse, on considère que le cycliste est à l'arrêt. */

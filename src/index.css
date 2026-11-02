@@ -1025,8 +1025,32 @@ td.best {
 }
 
 .clear-rides {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
   margin: 0.75rem 0 0;
+}
+
+.export-note {
   text-align: right;
+}
+
+.demo-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.75rem;
+  background: color-mix(in srgb, var(--accent) 22%, var(--surface));
+  border: 1px solid var(--accent);
+  font-size: 0.875rem;
+}
+
+.demo-banner p {
+  margin: 0;
+  max-width: 65ch;
 }
 
 .msg-error {

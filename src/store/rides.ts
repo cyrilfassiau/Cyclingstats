@@ -6,9 +6,16 @@ import type { Ride } from '@/features/rides/rideStats'
 
 interface RidesState {
   rides: Ride[]
+  /** Version du fichier de démo actuellement chargé, pour recevoir les nouvelles démos. */
+  demoVersion: string | null
+  /** Vrai dès que l'utilisateur a importé ses sorties, vidé la liste ou retiré la démo. */
+  demoDismissed: boolean
+  /** Ajoute des sorties importées par l'utilisateur ; elles remplacent la démo. */
   addRides: (rides: Ride[]) => void
   removeRide: (id: string) => void
   clearRides: () => void
+  loadDemo: (rides: Ride[], version: string) => void
+  dismissDemo: () => void
 }
 
 const hasIndexedDb = () => typeof indexedDB !== 'undefined'
@@ -74,15 +81,35 @@ export const useRides = create<RidesState>()(
   persist(
     (set) => ({
       rides: [],
-      addRides: (rides) => set((state) => ({ rides: [...state.rides, ...rides] })),
+      demoVersion: null,
+      demoDismissed: false,
+      addRides: (rides) =>
+        set((state) => ({
+          rides: [...state.rides.filter((r) => !r.demo), ...rides],
+          demoDismissed: true,
+        })),
       removeRide: (id) => set((state) => ({ rides: state.rides.filter((r) => r.id !== id) })),
-      clearRides: () => set({ rides: [] }),
+      clearRides: () => set({ rides: [], demoDismissed: true }),
+      loadDemo: (rides, version) =>
+        set((state) => ({
+          rides: [
+            ...state.rides.filter((r) => !r.demo),
+            ...rides.map((r) => ({ ...r, demo: true })),
+          ],
+          demoVersion: version,
+        })),
+      dismissDemo: () =>
+        set((state) => ({ rides: state.rides.filter((r) => !r.demo), demoDismissed: true })),
     }),
     {
       name: 'cyclingstats-rides',
       version: 1,
       storage: createJSONStorage(() => rideStorage),
-      partialize: ({ rides }) => ({ rides }),
+      partialize: ({ rides, demoVersion, demoDismissed }) => ({
+        rides,
+        demoVersion,
+        demoDismissed,
+      }),
     },
   ),
 )

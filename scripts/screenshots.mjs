@@ -110,23 +110,23 @@ try {
   await send('Page.enable')
   await send('Runtime.enable')
 
-  // Première visite : préférences de démo et import des sorties d'exemple.
+  // Première visite : préférences de démo ; la page Mes sorties charge d'elle-même la démo
+  // publiée dans public/demo/rides.json.
   await send('Page.navigate', { url: `${BASE}/rides` })
   await sleep(3000)
   await evaluate(
     send,
     `localStorage.setItem('cyclingstats-preferences', ${JSON.stringify(JSON.stringify(PREFERENCES))})`,
   )
-  await evaluate(
-    send,
-    `[...document.querySelectorAll('button')].find((b) => b.textContent.includes("sorties d'exemple"))?.click()`,
-  )
-  await sleep(2000)
-  // Les sorties sont rangées dans IndexedDB : on lit l'adresse de la sortie dans le tableau.
+  await send('Page.reload')
+  await sleep(3000)
+  // Les sorties sont rangées dans IndexedDB : on lit l'adresse de la plus récente dans le tableau.
   const ridePath = await evaluate(
     send,
-    `[...document.querySelectorAll('a[href^="/rides/"]')].find((a) => a.textContent.includes('Forclaz'))?.getAttribute('href')`,
+    `document.querySelector('tbody a[href^="/rides/"]')?.getAttribute('href') ?? null`,
   )
+  if (!ridePath)
+    console.warn('Aucune sortie de démo (public/demo/rides.json) : capture de sortie ignorée.')
 
   await mkdir(OUT, { recursive: true })
   for (const shot of SHOTS) {
@@ -141,6 +141,7 @@ try {
     await send('Emulation.setEmulatedMedia', {
       features: [{ name: 'prefers-color-scheme', value: shot.dark ? 'dark' : 'light' }],
     })
+    if (shot.path === 'RIDE' && !ridePath) continue
     const path = shot.path === 'RIDE' ? ridePath : shot.path
     await send('Page.navigate', { url: `${BASE}${path}` })
     // Laisse le temps aux données (fausse API, Open-Meteo, tuiles de carte) d'arriver.
