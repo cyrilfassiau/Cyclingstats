@@ -93,8 +93,7 @@ export default function DashboardPage() {
     <section aria-labelledby="dashboard-title">
       <h1 id="dashboard-title">Analyse</h1>
       <p className="subtitle">
-        Cliquez sur un coureur dans n'importe quel graphique : tous les graphiques le mettent en
-        évidence.
+        Statistiques du coureur sur le Tour De France 2026 uniquement.
       </p>
 
       <div className="profile">

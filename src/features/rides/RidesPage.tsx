@@ -130,16 +130,11 @@ export default function RidesPage() {
             }}
           />
         </label>
-        <div className="import-side">
-          <button type="button" disabled={busy} onClick={() => runImport(sampleSources())}>
-            Charger 3 sorties d'exemple
-          </button>
-          <p className="meta">Traces générées autour du lac d'Annecy, pas de vraies sorties.</p>
-        </div>
+     
       </div>
 
       <details className="help">
-        <summary>Récupérer toutes mes sorties Garmin</summary>
+        <summary>Comment récupérer toutes mes sorties Garmin via Garmin Connect</summary>
         <ol>
           <li>
             <strong>Une sortie</strong> : dans Garmin Connect, ouvrez l'activité puis utilisez
@@ -150,14 +145,10 @@ export default function RidesPage() {
             vos données personnelles. Garmin envoie par e-mail un lien vers une archive .zip.
           </li>
           <li>
-            Déposez l'archive telle quelle : les activités vélo sont retrouvées, même dans les zip
-            imbriqués. Les autres sports, le home trainer et les doublons sont ignorés.
+            Déposez l'archive telle quelle.
           </li>
         </ol>
-        <p className="meta">
-          Une synchronisation automatique demanderait un serveur et l'accès à l'API officielle de
-          Garmin, réservé aux développeurs acceptés par Garmin.
-        </p>
+        
       </details>
 
       <div className="import-messages" aria-live="polite">

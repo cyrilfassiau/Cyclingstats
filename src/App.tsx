@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from 'react'
 import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { EditionBanner, SiteFooter } from '@/components/SiteChrome'
-import { ThemeSelect } from '@/components/ThemeSelect'
+import { SiteFooter } from '@/components/SiteChrome'
 import StagesPage from '@/features/stages/StagesPage'
 import { usePreferences } from '@/store/preferences'
 
@@ -73,9 +72,9 @@ export default function App() {
             </NavLink>
             <NavLink to="/rides">Mes sorties</NavLink>
           </nav>
-          <ThemeSelect />
+          
         </div>
-        <EditionBanner />
+        
       </header>
       <main id="main" ref={mainRef} tabIndex={-1}>
         <Suspense fallback={<p aria-busy="true">Chargement…</p>}>

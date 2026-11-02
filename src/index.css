@@ -17,7 +17,7 @@
   --border-strong: #c9c7be;
   --bar: #141414;
   --bar-text: #ffffff;
-  --header-bg: #0f0f0f;
+  --header-bg: #1d2742;
   --header-text: #b9b8b2;
   --banner-bg: #1d2742;
   --banner-text: #dfe4f2;
@@ -59,72 +59,6 @@
   line-height: 1.45;
 }
 
-/* Thème sombre : préférence système, sauf si l'utilisateur a forcé le clair */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #0e0e0d;
-    --surface: #181816;
-    --surface-2: #1f1f1d;
-    --text: #f0efec;
-    --muted: #b0aea5;
-    --border: #2c2c29;
-    --border-strong: #45453f;
-    --bar: #262623;
-    --bar-text: #f0efec;
-    --header-bg: #000000;
-    --header-text: #a9a8a1;
-    --banner-bg: #151c30;
-    --banner-text: #cdd3e3;
-    --focus: #ffc400;
-    --underline: #ffc400;
-    --row-hover: #20201d;
-    --skeleton: #2a2a27;
-    --danger: #ff8a7a;
-    --success: #69db7c;
-    --jersey-stroke: #0b0b0b;
-    --series-1: #3987e5;
-    --series-2: #d95926;
-    --series-3: #199e70;
-    --series-4: #c98500;
-    --chart-emph: #ffc400;
-    --chart-deemph: #4a4a45;
-    --chart-grid: #2c2c2a;
-    --chart-axis: #383835;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme='dark'] {
-  --bg: #0e0e0d;
-  --surface: #181816;
-  --surface-2: #1f1f1d;
-  --text: #f0efec;
-  --muted: #b0aea5;
-  --border: #2c2c29;
-  --border-strong: #45453f;
-  --bar: #262623;
-  --bar-text: #f0efec;
-  --header-bg: #000000;
-  --header-text: #a9a8a1;
-  --banner-bg: #151c30;
-  --banner-text: #cdd3e3;
-  --focus: #ffc400;
-  --underline: #ffc400;
-  --row-hover: #20201d;
-  --skeleton: #2a2a27;
-  --danger: #ff8a7a;
-  --success: #69db7c;
-  --jersey-stroke: #0b0b0b;
-  --series-1: #3987e5;
-  --series-2: #d95926;
-  --series-3: #199e70;
-  --series-4: #c98500;
-  --chart-emph: #ffc400;
-  --chart-deemph: #4a4a45;
-  --chart-grid: #2c2c2a;
-  --chart-axis: #383835;
-  color-scheme: dark;
-}
 
 /* ---------- Base ---------- */
 
@@ -1230,7 +1164,7 @@ td.best {
 .site-footer {
   margin-top: 2rem;
   padding: 2.5rem 1rem 2rem;
-  background: #141414;
+  background: #1d2742;
   color: #b5b4ad;
   font-size: 0.8125rem;
   clip-path: polygon(0 1.25rem, 100% 0, 100% 100%, 0 100%);
