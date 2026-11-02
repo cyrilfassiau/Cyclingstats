@@ -57,7 +57,7 @@ export default function App() {
             <span className="brand-mark" aria-hidden="true">
               CS
             </span>
-            <span className="brand-word">Cyclingstats</span>
+            <span className="brand-word">My TDF cyclingstats</span>
           </Link>
           <nav aria-label="Navigation principale">
             <NavLink to="/stages">Étapes</NavLink>
