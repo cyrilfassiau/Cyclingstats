@@ -5,17 +5,18 @@ import { ChartCard } from '@/components/ChartCard'
 import { Highlights } from '@/components/Highlights'
 import { CloseIcon } from '@/components/Icons'
 import { Pagination } from '@/components/Pagination'
+import { Panel } from '@/components/Panel'
 import { EmptyState } from '@/components/QueryState'
 import { formatDecimal, formatHours } from '@/lib/format'
 import { useRides, useRidesHydrated } from '@/store/rides'
 import {
   fileSource,
   importActivities,
-  sampleSources,
   type ActivitySource,
   type ImportSummary,
 } from './importRides'
 import { groupByMonth } from './rideStats'
+import { TourRecap } from './TourRecap'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
 const monthFormat = new Intl.DateTimeFormat('fr-FR', { month: 'short', year: '2-digit' })
@@ -320,6 +321,10 @@ export default function RidesPage() {
               </ChartCard>
             </div>
           )}
+
+          <Panel title="Mes sorties vs le Tour de France 2026">
+            <TourRecap rides={rides} />
+          </Panel>
         </>
       )}
     </section>
