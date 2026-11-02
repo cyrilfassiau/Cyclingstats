@@ -3,6 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { renderPage } from '@/test/render'
 import { useRides } from '@/store/rides'
 import RidesPage from './RidesPage'
+import { formatDecimal } from '@/lib/format'
+import { parseGpx } from './gpx'
+import { computeRide, type Ride } from './rideStats'
 
 const GPX = `<?xml version="1.0"?>
 <gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1">
@@ -46,5 +49,45 @@ describe('page Mes sorties', () => {
 
     expect(await screen.findByText('matin.gpx : déjà importé.')).toBeInTheDocument()
     expect(useRides.getState().rides).toHaveLength(1)
+  })
+})
+
+describe('page Mes sorties : graphique et récap', () => {
+  // 30 sorties : plus que les 25 lignes d'une page du tableau, sur deux années, dont une non datée.
+  const base = computeRide(parseGpx(GPX).points, { id: 'x', name: 'Sortie', fileName: 'x.gpx' })
+  const rides: Ride[] = Array.from({ length: 30 }, (_, i) => ({
+    ...base,
+    id: `r${i}`,
+    fileName: `r${i}.gpx`,
+    startTime:
+      i === 0 ? null : Date.parse(i < 10 ? '2025-06-15T08:00:00Z' : '2026-09-15T08:00:00Z'),
+  }))
+
+  beforeEach(() => useRides.setState({ rides }))
+
+  it('compte absolument toutes les sorties dans le récap face au Tour', async () => {
+    renderPage(<RidesPage />, { url: '/rides' })
+
+    const recap = await screen.findByRole('columnheader', { name: 'Mes 30 sorties' })
+    const table = recap.closest('table')!
+    const distanceRow = within(table).getByRole('row', { name: /^Distance/ })
+    expect(distanceRow).toHaveTextContent(`${formatDecimal(base.distanceKm * 30)} km`)
+  })
+
+  it('bascule les kilomètres entre mois et années, dans l’URL', async () => {
+    const user = userEvent.setup()
+    renderPage(<RidesPage />, { url: '/rides' })
+
+    expect(await screen.findByRole('heading', { name: 'Kilomètres par mois' })).toBeInTheDocument()
+    expect(screen.getByText(/1 sortie non datée/)).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Par an' }))
+
+    expect(screen.getByRole('heading', { name: 'Kilomètres par an' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Par an' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByTestId('location')).toHaveTextContent('/rides?periode=an')
+    const dataTable = screen.getAllByRole('table').find((t) => within(t).queryByText('Année'))!
+    expect(within(dataTable).getByRole('row', { name: /^2025 9/ })).toBeInTheDocument()
+    expect(within(dataTable).getByRole('row', { name: /^2026 20/ })).toBeInTheDocument()
   })
 })

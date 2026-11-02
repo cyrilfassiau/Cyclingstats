@@ -4,7 +4,7 @@ import {
   closestStage,
   computeRide,
   elevationGain,
-  groupByMonth,
+  groupByPeriod,
   sampleIndices,
 } from './rideStats'
 
@@ -90,23 +90,28 @@ describe('sampleIndices', () => {
   })
 })
 
-describe('groupByMonth', () => {
+describe('groupByPeriod', () => {
+  const base = computeRide(parseGpx(GPX).points, { id: 'a', name: 'A', fileName: 'a.gpx' })
+  const october = { ...base, id: 'b', startTime: Date.parse('2026-10-03T08:00:00Z') }
+  const lastYear = { ...base, id: 'd', startTime: Date.parse('2025-06-01T08:00:00Z') }
+  const undated = { ...base, id: 'e', startTime: null }
+  const rides = [base, { ...base, id: 'c' }, october, lastYear, undated]
+
   it('additionne les sorties d’un même mois', () => {
-    const base = computeRide(parseGpx(GPX).points, {
-      id: 'a',
-      name: 'A',
-      fileName: 'a.gpx',
-    })
-    const later = {
-      ...base,
-      id: 'b',
-      startTime: Date.parse('2026-10-03T08:00:00Z'),
-    }
-    const months = groupByMonth([base, { ...base, id: 'c' }, later])
-    expect(months.map((m) => [m.month, m.count])).toEqual([
+    expect(groupByPeriod(rides, 'month').map((m) => [m.period, m.count])).toEqual([
+      ['2025-06', 1],
       ['2026-09', 2],
       ['2026-10', 1],
     ])
+  })
+
+  it('additionne les sorties d’une même année', () => {
+    const years = groupByPeriod(rides, 'year')
+    expect(years.map((y) => [y.period, y.count])).toEqual([
+      ['2025', 1],
+      ['2026', 3],
+    ])
+    expect(years[1]!.distanceKm).toBeCloseTo(base.distanceKm * 3, 6)
   })
 })
 

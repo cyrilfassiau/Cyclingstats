@@ -141,24 +141,34 @@ export function computeRide(
   }
 }
 
-export interface MonthStats {
-  /** Clé triable « 2026-09 » */
-  month: string
+export type Period = 'month' | 'year'
+
+export interface PeriodStats {
+  /** Clé triable : « 2026-09 » pour un mois, « 2026 » pour une année. */
+  period: string
   count: number
   distanceKm: number
   elevationGain: number
   movingSeconds: number
 }
 
-/** Regroupe les sorties datées par mois (heure locale). */
-export function groupByMonth(rides: Ride[]): MonthStats[] {
-  const months = new Map<string, MonthStats>()
+function periodKey(timestamp: number, period: Period) {
+  const date = new Date(timestamp)
+  const year = String(date.getFullYear())
+  return period === 'year' ? year : `${year}-${String(date.getMonth() + 1).padStart(2, '0')}`
+}
+
+/**
+ * Regroupe les sorties datées par mois ou par année (heure locale). Les sorties sans
+ * horodatage ne peuvent être rangées dans aucune période : elles ne sont pas comptées ici.
+ */
+export function groupByPeriod(rides: Ride[], period: Period): PeriodStats[] {
+  const groups = new Map<string, PeriodStats>()
   for (const ride of rides) {
     if (ride.startTime === null) continue
-    const date = new Date(ride.startTime)
-    const month = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
-    const entry = months.get(month) ?? {
-      month,
+    const key = periodKey(ride.startTime, period)
+    const entry = groups.get(key) ?? {
+      period: key,
       count: 0,
       distanceKm: 0,
       elevationGain: 0,
@@ -168,9 +178,9 @@ export function groupByMonth(rides: Ride[]): MonthStats[] {
     entry.distanceKm += ride.distanceKm
     entry.elevationGain += ride.elevationGain ?? 0
     entry.movingSeconds += ride.movingSeconds ?? 0
-    months.set(month, entry)
+    groups.set(key, entry)
   }
-  return [...months.values()].sort((a, b) => a.month.localeCompare(b.month))
+  return [...groups.values()].sort((a, b) => a.period.localeCompare(b.period))
 }
 
 /** Étape du Tour dont la distance est la plus proche de celle de la sortie. */

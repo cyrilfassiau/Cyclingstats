@@ -1104,6 +1104,32 @@ td.best {
   margin: 0.5rem 0 0;
 }
 
+/* Bascule à deux choix (mois / an), boutons à état pressé */
+.segmented {
+  display: inline-flex;
+  margin: 0.6rem 0.75rem 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.segmented button {
+  border: none;
+  border-radius: 0;
+  padding: 0.3rem 0.8rem;
+  background: var(--surface);
+}
+
+.segmented button + button {
+  border-left: 1px solid var(--border-strong);
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--surface);
+}
+
 /* ---------- Récap « mes sorties vs le Tour » ---------- */
 
 .tour-recap-head {

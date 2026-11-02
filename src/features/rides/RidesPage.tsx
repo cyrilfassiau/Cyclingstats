@@ -1,5 +1,5 @@
 import { useMemo, useState, type DragEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { ChartCard } from '@/components/ChartCard'
 import { Highlights } from '@/components/Highlights'
@@ -15,7 +15,7 @@ import {
   type ActivitySource,
   type ImportSummary,
 } from './importRides'
-import { groupByMonth } from './rideStats'
+import { groupByPeriod, type Period } from './rideStats'
 import { TourRecap } from './TourRecap'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
@@ -41,9 +41,14 @@ function summarize(summary: ImportSummary) {
   return `${parts.join(', ')}.`
 }
 
-function monthLabel(month: string) {
-  return monthFormat.format(new Date(`${month}-15T12:00:00`))
+function periodLabel(key: string, period: Period) {
+  return period === 'year' ? key : monthFormat.format(new Date(`${key}-15T12:00:00`))
 }
+
+const PERIODS: { value: Period; label: string; title: string; column: string }[] = [
+  { value: 'month', label: 'Par mois', title: 'Kilomètres par mois', column: 'Mois' },
+  { value: 'year', label: 'Par an', title: 'Kilomètres par an', column: 'Année' },
+]
 
 export default function RidesPage() {
   const rides = useRides((s) => s.rides)
@@ -55,6 +60,19 @@ export default function RidesPage() {
   const [dragging, setDragging] = useState(false)
   const [summary, setSummary] = useState<ImportSummary | null>(null)
   const [page, setPage] = useState(1)
+  // Regroupement du graphique dans l'URL (?periode=an), comme les filtres des autres pages.
+  const [params, setParams] = useSearchParams()
+  const period: Period = params.get('periode') === 'an' ? 'year' : 'month'
+  const periodInfo = PERIODS.find((p) => p.value === period)!
+  const setPeriod = (value: Period) =>
+    setParams(
+      (prev) => {
+        if (value === 'year') prev.set('periode', 'an')
+        else prev.delete('periode')
+        return prev
+      },
+      { replace: true },
+    )
   const busy = progress !== null
   useDocumentTitle('Mes sorties')
 
@@ -62,7 +80,8 @@ export default function RidesPage() {
     () => [...rides].sort((a, b) => (b.startTime ?? 0) - (a.startTime ?? 0)),
     [rides],
   )
-  const months = useMemo(() => groupByMonth(rides), [rides])
+  const periods = useMemo(() => groupByPeriod(rides, period), [rides, period])
+  const undatedCount = rides.filter((r) => r.startTime === null).length
   const totals = useMemo(
     () => ({
       km: rides.reduce((sum, r) => sum + r.distanceKm, 0),
@@ -131,7 +150,6 @@ export default function RidesPage() {
             }}
           />
         </label>
-     
       </div>
 
       <details className="help">
@@ -145,11 +163,8 @@ export default function RidesPage() {
             <strong>Tout l'historique</strong> : depuis votre compte Garmin, demandez l'export de
             vos données personnelles. Garmin envoie par e-mail un lien vers une archive .zip.
           </li>
-          <li>
-            Déposez l'archive telle quelle.
-          </li>
+          <li>Déposez l'archive telle quelle.</li>
         </ol>
-        
       </details>
 
       <div className="import-messages" aria-live="polite">
@@ -268,14 +283,19 @@ export default function RidesPage() {
             </button>
           </p>
 
-          {months.length > 0 && (
+          {periods.length > 0 && (
             <div className="chart-grid">
               <ChartCard
-                title="Kilomètres par mois"
+                title={periodInfo.title}
+                description={
+                  undatedCount
+                    ? `${plural(undatedCount, 'sortie non datée', 'sorties non datées')} : impossible de la ranger dans une période, elle reste comptée dans les totaux et le récap ci-dessous.`
+                    : undefined
+                }
                 table={{
-                  columns: ['Mois', 'Sorties', 'Distance', 'D+', 'En mouvement'],
-                  rows: months.map((m) => [
-                    monthLabel(m.month),
+                  columns: [periodInfo.column, 'Sorties', 'Distance', 'D+', 'En mouvement'],
+                  rows: periods.map((m) => [
+                    periodLabel(m.period, period),
                     m.count,
                     `${formatDecimal(m.distanceKm)} km`,
                     `${Math.round(m.elevationGain)} m`,
@@ -283,9 +303,24 @@ export default function RidesPage() {
                   ]),
                 }}
               >
+                <div className="segmented" role="group" aria-label="Regrouper les kilomètres">
+                  {PERIODS.map((p) => (
+                    <button
+                      key={p.value}
+                      type="button"
+                      aria-pressed={period === p.value}
+                      onClick={() => setPeriod(p.value)}
+                    >
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart
-                    data={months.map((m) => ({ label: monthLabel(m.month), km: m.distanceKm }))}
+                    data={periods.map((m) => ({
+                      label: periodLabel(m.period, period),
+                      km: m.distanceKm,
+                    }))}
                     margin={{ top: 8, right: 8, bottom: 4, left: 4 }}
                   >
                     <CartesianGrid vertical={false} stroke="var(--chart-grid)" />
@@ -295,9 +330,10 @@ export default function RidesPage() {
                       tick={{ fill: 'var(--muted)', fontSize: 12 }}
                     />
                     <YAxis
-                      width={40}
+                      width={52}
                       stroke="var(--chart-axis)"
                       tick={{ fill: 'var(--muted)', fontSize: 12 }}
+                      tickFormatter={(km: number) => km.toLocaleString('fr-FR')}
                     />
                     <Tooltip
                       cursor={{ fill: 'var(--row-hover)' }}
