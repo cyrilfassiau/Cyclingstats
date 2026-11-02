@@ -10,9 +10,7 @@ export function DemoBanner() {
     <div className="demo-banner" role="note">
       <p>
         <strong>Démonstration :</strong> {demoCount}{' '}
-        {demoCount > 1 ? "sorties réelles de l'auteur" : "sortie réelle de l'auteur"}, départs et
-        arrivées masqués. Importez vos fichiers pour les remplacer : tout reste dans votre
-        navigateur.
+        {demoCount > 1 ? "de mes sorties réelles" : "de mes sortie réelle de l'auteur"}. Importez vos fichiers pour les remplacer, sachant que tout reste en local.
       </p>
       <button type="button" onClick={dismissDemo}>
         Retirer la démo
